@@ -1,0 +1,121 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Activity Log</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
+</head>
+<body style="background-color: #8ecae6;">
+    <div class="sidebar" id="menu">
+        <h2>Aquarius Pest Control Services</h2>
+
+        <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="@Url.Action("ProprieterSchedule", "Proprieter")" class="menu-item" data-menu="Schedule">
+            <span class="icon">📑</span>
+            <span>Archives</span>
+        </a>
+        <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
+            <span class="icon">📋</span>
+            <span>Customers</span>
+        </a>
+        <a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
+            <span class="icon">🔧</span>
+            <span>Technicians</span>
+        </a>
+        <a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
+            <span class="icon">📊</span>
+            <span>Reports</span>
+        </a>
+        <a href="@Url.Action("ProprieterContacts", "Proprieter")" class="menu-item" data-menu="Contacts">
+            <span class="icon">📞</span>
+            <span>Contact Us</span>
+        </a>
+        <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
+            <span class="icon">📑</span>
+            <span>Activity Log</span>
+        </a>
+        <a href="@Url.Action("ProprieterArchives", "Proprieter")" class="menu-item" data-menu="Archives">
+            <span class="icon">📑</span>
+            <span>Archives</span>
+        </a>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
+            <div class="profile-info">
+                <span>Rodrigo</span>
+                <span class="role">Proprietor</span>
+            </div>
+            <span class="logout-arrow">⮞</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="table-container">
+            <div class="header">
+                <h2>TECHNICIANS</h2>
+
+                <div class="search-container">
+                    <button class="add-tech-btn">Add Technician</button>
+                    <input type="text" id="searchInput" placeholder="Search..." />
+                    <div class="sort-container" id="sortButton">
+                        <span>Sort by Newest</span>
+                        <span class="sort-arrow">▼</span>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technician Name</th>
+                        <th>Phone Number</th>
+                        <th>Scheduled On</th>
+                        <th>Work Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="activityLog">
+                    <tr>
+                        <td>John Doe</td>
+                        <td>(123) 456-7890</td>
+                        <td>09/10/2024</td>
+                        <td><button class="status-btn active">Active</button></td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>(098) 765-4321</td>
+                        <td>09/08/2024</td>
+                        <td><button class="status-btn waiting">Waiting</button></td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Mike Johnson</td>
+                        <td>(555) 123-4567</td>
+                        <td>09/05/2024</td>
+                        <td><button class="status-btn inactive">Inactive</button></td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <span id="paginationInfo">Showing 1 to 3 of 3 entries</span>
+                <div>
+                    <button id="prevButton">Previous</button>
+                    <button id="nextButton">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/proSidebar.js"></script>
+</body>
+</html>
