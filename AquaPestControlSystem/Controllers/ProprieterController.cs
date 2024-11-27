@@ -22,12 +22,6 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
-
-        public IActionResult ProprieterContacts()
-        {
-            return View();
-        }
-
         public IActionResult ProprieterActivityLog()
         {
             return View();
@@ -37,6 +31,12 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
+
+        public ActionResult ProprieterSchedule()
+        {
+            return View();
+        }
+
 
     }
 }

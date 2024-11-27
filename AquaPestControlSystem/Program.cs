@@ -1,9 +1,13 @@
+using AquaPestControlSystem.DAL;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
 var app = builder.Build();
+
+builder.Services.AddDbContext<ProprieterCustomerDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -22,6 +26,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=User}/{action=LandingPage}/{id?}");
+    pattern: "{controller=Proprieter}/{action=ProprieterActivityLog}/{id?}");
 
 app.Run();
