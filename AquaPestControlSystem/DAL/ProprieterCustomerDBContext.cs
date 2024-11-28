@@ -11,13 +11,5 @@ namespace AquaPestControlSystem.DAL
         }
 
         public DbSet<ProprietorCustomer> Customers { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Server=CEDRICJAMES\\SQLEXPRESS;Database=AquaPestDB;Trusted_Connection=True;");
-            }
-        }
     }
 }

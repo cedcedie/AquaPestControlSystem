@@ -3,27 +3,29 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+builder.Services.AddControllersWithViews();
 
+// Register services before calling builder.Build()
 builder.Services.AddDbContext<ProprieterCustomerDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add authorization services
+builder.Services.AddAuthorization();
 
-// Configure the HTTP request pipeline.
+// Build the application
+var app = builder.Build();
+
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-app.UseAuthorization();
-
+app.UseAuthorization(); // Requires AddAuthorization() in the services
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Proprieter}/{action=ProprieterActivityLog}/{id?}");
