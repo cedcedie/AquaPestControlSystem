@@ -22,6 +22,10 @@
             <span class="icon">📑</span>
             <span>Schedule</span>
         </a>
+        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
+            <span class="icon">📋</span>
+            <span>Appointments</span>
+        </a>
         <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
             <span class="icon">📋</span>
             <span>Customers</span>
@@ -59,7 +63,9 @@
                 <h2>TECHNICIANS</h2>
 
                 <div class="search-container">
-                    <button class="add-tech-btn">Add Technician</button>
+                    <a href="@Url.Action("ProprieterAddTechnician", "Proprieter")">
+                        <button class="add-tech-btn">Add Technician</button>
+                    </a>
                     <input type="text" id="searchInput" placeholder="Search..." />
                     <div class="sort-container" id="sortButton">
                         <span>Sort by Newest</span>
@@ -78,27 +84,40 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="activityLog">
+                <tbody id="Technicians">
                     <tr>
                         <td>John Doe</td>
                         <td>(123) 456-7890</td>
                         <td>09/10/2024</td>
                         <td><button class="status-btn active">Active</button></td>
-                        <td><button class="edit-btn">Edit</button></td>
+                        <td>
+                            <a href="@Url.Action("ProprieterEditTechnician", "Proprieter")">
+                                <button class="edit-btn">Edit</button>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Jane Smith</td>
                         <td>(098) 765-4321</td>
                         <td>09/08/2024</td>
                         <td><button class="status-btn waiting">Waiting</button></td>
-                        <td><button class="edit-btn">Edit</button></td>
+                        <td>
+                            <a href="@Url.Action("ProprieterEditTechnician", "Proprieter")">
+                                <button class="edit-btn">Edit</button>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Mike Johnson</td>
                         <td>(555) 123-4567</td>
                         <td>09/05/2024</td>
                         <td><button class="status-btn inactive">Inactive</button></td>
-                        <td><button class="edit-btn">Edit</button></td>
+
+                        <td>
+                            <a href="@Url.Action("ProprieterEditTechnician", "Proprieter")">
+                                <button class="edit-btn">Edit</button>
+                            </a>
+                            </td>
                     </tr>
                 </tbody>
             </table>

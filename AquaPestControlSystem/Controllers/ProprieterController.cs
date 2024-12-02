@@ -37,6 +37,36 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
+        public IActionResult ProprieterViewCustomer()
+        {
+            return View();
+        }
 
+        public IActionResult ProprieterAppointments()
+        {
+            return View();
+        }
+        public IActionResult ProprieterAddCustomer()
+        {
+            return View();
+        }
+        public IActionResult ProprieterAddTechnician()
+        {
+            return View();
+        }
+        public IActionResult ProprieterEditTechnician()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterViewReport()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterViewArchives()
+        {
+            return View();
+        }
     }
 }

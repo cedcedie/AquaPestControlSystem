@@ -1,5 +1,5 @@
 const menuItems = document.querySelectorAll('.menu-item');
-const activeMenu = localStorage.getItem('activeMenu') || 'customers';
+const activeMenu = localStorage.getItem('activeMenu') || 'Dashboard'; 
 
 menuItems.forEach(item => {
     if (item.getAttribute('data-menu') === activeMenu) {
@@ -8,9 +8,14 @@ menuItems.forEach(item => {
 });
 
 menuItems.forEach(item => {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function () {
+  
         menuItems.forEach(item => item.classList.remove('active'));
+
+ 
         this.classList.add('active');
+
+      
         localStorage.setItem('activeMenu', this.getAttribute('data-menu'));
     });
 });

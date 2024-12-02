@@ -1,6 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
 @{
 }
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aquarius Pest Control Services - Activity Log</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/output.css" media="all"/>
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
 </head>
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
@@ -23,6 +24,10 @@
         <a href="@Url.Action("ProprieterSchedule", "Proprieter")" class="menu-item" data-menu="Schedule">
             <span class="icon">📑</span>
             <span>Schedule</span>
+        </a>
+        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
+            <span class="icon">📋</span>
+            <span>Appointments</span>
         </a>
         <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
             <span class="icon">📋</span>
@@ -60,7 +65,9 @@
             <div class="header">
                 <h2>CUSTOMERS</h2>
                 <div class="search-container">
-                    <button class="add-tech-btn">Add Customer</button>
+                    <a href="@Url.Action("ProprieterAddCustomer", "Proprieter")">
+                        <button class="add-tech-btn">Add Customer</button>
+                    </a>
                     <input type="text" id="searchInput" placeholder="Search..." />
                     <div class="sort-container" id="sortButton">
                         <span>Sort by Newest</span>
@@ -68,7 +75,7 @@
                     </div>
                 </div>
             </div>
-                    
+
             <table>
                 <thead>
                     <tr>
@@ -78,7 +85,7 @@
                         <th>Date</th>
                         <th>Town</th>
                         <th>Status</th>
-                        <th></th> 
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="customerLog">
@@ -89,7 +96,11 @@
                         <td>09/10/2024</td>
                         <td>Springfield</td>
                         <td><button class="status-btn assigned">Assigned</button></td>
-                        <td><button class="view-btn">View</button></td>
+                        <td>
+                            <a href="@Url.Action("ProprieterViewCustomer", "Proprieter")">
+                                <button class="view-btn">View</button>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Jane Smith</td>
@@ -98,7 +109,11 @@
                         <td>09/08/2024</td>
                         <td>Greenville</td>
                         <td><button class="status-btn on-work">On Work</button></td>
-                        <td><button class="view-btn">View</button></td>
+                        <td>
+                            <a href="@Url.Action("ProprieterViewCustomer", "Proprieter")">
+                                <button class="view-btn">View</button>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>Mike Johnson</td>
@@ -107,11 +122,15 @@
                         <td>09/05/2024</td>
                         <td>Lakeview</td>
                         <td><button class="status-btn not-assigned">NA</button></td>
-                        <td><button class="view-btn">View</button></td>
+                        <td>
+                            <a href="@Url.Action("ProprieterViewCustomer", "Proprieter")">
+                                <button class="view-btn">View</button>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-                    
+
             <div class="pagination">
                 <span id="paginationInfo">Showing 1 to 3 of 3 entries</span>
                 <div>
@@ -124,7 +143,7 @@
 
     <script src="~/js/proSidebar.js"></script>
     <script>
-        document.getElementById('searchInput').addEventListener('keyup', function() {
+        document.getElementById('searchInput').addEventListener('keyup', function () {
             let filter = this.value.toLowerCase();
             let rows = document.querySelectorAll('#customerLog tr');
 
