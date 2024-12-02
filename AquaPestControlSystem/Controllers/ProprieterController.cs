@@ -32,11 +32,6 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
-        public ActionResult ProprieterSchedule()
-        {
-            return View();
-        }
-
         public IActionResult ProprieterViewCustomer()
         {
             return View();
@@ -65,6 +60,22 @@ namespace AquaPestControlSystem.Controllers
         }
 
         public IActionResult ProprieterViewArchives()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterAddAppointment()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterViewAppointments()
+        {
+            return View();
+        }
+
+
+        public IActionResult ProprieterRequestAppointments()
         {
             return View();
         }

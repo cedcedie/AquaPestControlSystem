@@ -3,6 +3,8 @@
 *@
 @{
 }
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/output.css" media="all" />
 </head>
+
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
@@ -17,10 +20,6 @@
         <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
             <span class="icon">📋</span>
             <span>Dashboard</span>
-        </a>
-        <a href="@Url.Action("ProprieterSchedule", "Proprieter")" class="menu-item" data-menu="Schedule">
-            <span class="icon">📑</span>
-            <span>Schedule</span>
         </a>
         <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
             <span class="icon">📋</span>
@@ -56,6 +55,82 @@
             <span class="logout-arrow">⮞</span>
         </div>
     </div>
-    <script src="~/js/proSidebar.js"></script>
+    <div class="content">
+        <div class="table-container bg-white p-6 relative mx-auto max-w-6xl overflow-hidden rounded-lg shadow-lg">
+            <div class="header mb-6">
+                <h2 class="text-center text-2xl font-semibold">Add Technician</h2>
+            </div>
+            <form class="space-y-6">
+                <div class="gap-6 grid grid-cols-3">
+                    <div class="form-group">
+                        <label for="firstName" class="mb-2 block text-sm font-semibold">First Name</label>
+                        <input type="text" id="firstName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="middleName" class="mb-2 block text-sm font-semibold">Middle Name</label>
+                        <input type="text" id="middleName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter middle name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="mb-2 block text-sm font-semibold">Last Name</label>
+                        <input type="text" id="lastName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter last name" required>
+                    </div>
+                </div>
+                <div class="gap-6 grid grid-cols-2">
+                    <div class="form-group">
+                        <label for="phone" class="mb-2 block text-sm font-semibold">Phone Number</label>
+                        <input type="tel" id="phone" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="mb-2 block text-sm font-semibold">Email</label>
+                        <input type="email" id="email" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address" class="mb-2 block text-sm font-semibold">Address</label>
+                    <textarea id="address" class="p-3 border-gray-300 w-full rounded-lg border text-lg" rows="3" placeholder="Enter address" required></textarea>
+                </div>
+                <div class="gap-6 grid grid-cols-3">
+                    <div class="form-group">
+                        <label for="dateOfHire" class="mb-2 block text-sm font-semibold">Date of Hire</label>
+                        <input type="date" id="dateOfHire" class="p-3 border-gray-300 w-full rounded-lg border text-lg" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="mb-2 block text-sm font-semibold">Areas of Expertise</label>
+                        <div class="gap-2 grid grid-cols-1">
+                            <div>
+                                <input type="checkbox" id="rodentControl" name="expertise" value="Rodent Control">
+                                <label for="rodentControl" class="ml-2">Rodent Control</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="antControl" name="expertise" value="Ant Control">
+                                <label for="antControl" class="ml-2">Ant Control</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="pestControl" name="expertise" value="Pest Control">
+                                <label for="pestControl" class="ml-2">Pest Control</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="termiteControl" name="expertise" value="Termite Control">
+                                <label for="termiteControl" class="ml-2">Termite Control</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="bedBugControl" name="expertise" value="Bed Bug Control">
+                                <label for="bedBugControl" class="ml-2">Bed Bug Control</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-8 text-center">
+                    <button type="submit" class="add-tech-btn py-2 px-8">Add Technician</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+        <script src="~/js/proSidebar.js"></script>
+
+
 </body>
-    </html>
+</html>

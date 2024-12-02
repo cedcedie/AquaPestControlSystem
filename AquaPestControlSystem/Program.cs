@@ -28,6 +28,6 @@ app.UseRouting();
 app.UseAuthorization(); // Requires AddAuthorization() in the services
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Proprieter}/{action=ProprieterActivityLog}/{id?}");
+    pattern: "{controller=Proprieter}/{action=ProprieterArchives}/{id?}");
 
 app.Run();

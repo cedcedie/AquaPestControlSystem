@@ -4,3 +4,35 @@
 @{
 }
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Activity Log</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
+</head>
+<body style="background-color: #8ecae6;">
+    <div class="sidebar" id="menu">
+        <h2>Aquarius Pest Control Services</h2>
+
+        <a href="@Url.Action("UserDashboard", "User")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="@Url.Action("UserMakeAppointment", "User")" class="menu-item" data-menu="appointments">
+            <span class="icon">📋</span>
+            <span>Create Appointment</span>
+        </a>
+        <div class="profile">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
+            <div class="profile-info">
+                <span>Rodrigo</span>
+                <span class="role">User</span>
+            </div>
+            <span class="logout-arrow">⮞</span>
+        </div>
+    </div>
+    <script src="~/js/proSidebar.js"></script>
+</body>
+    </html>
