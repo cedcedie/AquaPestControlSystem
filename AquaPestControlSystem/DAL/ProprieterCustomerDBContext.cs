@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using AquaPestControlSystem.Models;
+using AquaPestControlSystem.Models.DBEntities;
 
 namespace AquaPestControlSystem.DAL
 {
     public class ProprieterCustomerDBContext : DbContext
     {
-        public ProprieterCustomerDBContext(DbContextOptions<ProprieterCustomerDBContext> options)
-            : base(options)
+        public ProprieterCustomerDBContext(DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<ProprietorCustomer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }
