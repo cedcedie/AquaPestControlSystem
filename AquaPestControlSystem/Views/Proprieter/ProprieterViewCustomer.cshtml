@@ -3,6 +3,8 @@
 *@
 @{
 }
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,32 +16,37 @@
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
 
-        <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
+        <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard" aria-label="Dashboard">
             <span class="icon">📋</span>
             <span>Dashboard</span>
         </a>
-       
-        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
+
+        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments" aria-label="Appointments">
             <span class="icon">📋</span>
             <span>Appointments</span>
         </a>
-        <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
+
+        <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers" aria-label="Customers">
             <span class="icon">📋</span>
             <span>Customers</span>
         </a>
-        <a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
+
+        <a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians" aria-label="Technicians">
             <span class="icon">🔧</span>
             <span>Technicians</span>
         </a>
-        <a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
+
+        <a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports" aria-label="Reports">
             <span class="icon">📊</span>
             <span>Reports</span>
         </a>
-        <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
+
+        <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log" aria-label="Activity Log">
             <span class="icon">📑</span>
             <span>Activity Log</span>
         </a>
-        <a href="@Url.Action("ProprieterArchives", "Proprieter")" class="menu-item" data-menu="Archives">
+
+        <a href="@Url.Action("ProprieterArchives", "Proprieter")" class="menu-item" data-menu="Archives" aria-label="Archives">
             <span class="icon">📑</span>
             <span>Archives</span>
         </a>
@@ -53,6 +60,7 @@
             <span class="logout-arrow">⮞</span>
         </div>
     </div>
+
     <script src="~/js/proSidebar.js"></script>
-    </body>
-    </html>
+</body>
+</html>
