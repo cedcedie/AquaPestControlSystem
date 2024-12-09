@@ -91,7 +91,10 @@
                                 <td>@technician.FullName</td>
                                 <td>@technician.ContactNum</td>
                                 <td>@technician.Address</td>
-                                <td>@technician.Status</td>
+                                <td class="border @(@technician.Status.Equals("Active") ? "border-success" : "border-warning")">
+                                    @technician.Status
+                                </td>
+                                <td><button class="btn btn-warning">Edit</button></td>
                             </tr>
                         }
                     }

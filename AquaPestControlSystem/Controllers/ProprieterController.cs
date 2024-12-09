@@ -140,25 +140,33 @@ namespace AquaPestControlSystem.Controllers
         [HttpPost]
         public IActionResult ProprieterAddTechnician(TechnicianViewModel technicianData)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var technician = new Technician
+                if (ModelState.IsValid)
                 {
-                    FirstName = technicianData.FirstName,
-                    LastName = technicianData.LastName,
-                    MiddleName = technicianData.MiddleName,
-                    ContactNum = technicianData.ContactNum,
-                    Address = technicianData.Address,
-                    Status = technicianData.Status
-                };
+                    var technician = new Technician
+                    {
+                        FirstName = technicianData.FirstName,
+                        LastName = technicianData.LastName,
+                        MiddleName = technicianData.MiddleName,
+                        ContactNum = technicianData.ContactNum,
+                        Address = technicianData.Address,
+                        Status = technicianData.Status
+                    };
 
-                _context.Technicians.Add(technician);
-                _context.SaveChanges();
-                return RedirectToAction("ProprieterTechnician");
+                    _context.Technicians.Add(technician);
+                    _context.SaveChanges();
+                    return RedirectToAction("ProprieterTechnicians");
+                }
+                else
+                {
+                    TempData["errorMessage"] = " Model data is not valid";
+                    return View();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TempData["errorMessage"] = " Model data is not valid";
+                TempData["errorMessage"] = ex.Message;
                 return View();
             }
         }

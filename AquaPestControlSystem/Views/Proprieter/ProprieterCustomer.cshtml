@@ -61,7 +61,9 @@
             <div class="header">
                 <h2>CUSTOMERS</h2>
                 <div class="search-container">
-                    <a asp-action="ProprieterAddCustomer" asp-controller="Proprieter"  class="btn btn-primary add-tech-btn">Add Customer</a>
+                    <a href="@Url.Action("ProprieterAddCustomer", "Proprieter")">
+                        <button class="add-tech-btn">Add Technician</button>
+                    </a>
                     <input type="text" id="searchInput" placeholder="Search..." />
                     <div class="sort-container" id="sortButton">
                         <span>Sort by Newest</span>
