@@ -28,6 +28,6 @@ app.UseRouting();
 app.UseAuthorization(); // Requires AddAuthorization() in the services
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Technicians}/{action=TechnicianReports}/{id?}");
+    pattern: "{controller=Technician}/{action=TechnicianReports}/{id?}");
 
 app.Run();
