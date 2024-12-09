@@ -3,3 +3,169 @@
 *@
 @{
 }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Activity Log</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+</head>
+<body style="background-color: #8ecae6;">
+    <div class="sidebar" id="menu">
+        <h2>Aquarius Pest Control Services</h2>
+        <a href="@Url.Action("TechnicianDashboard", "Technician")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="@Url.Action("TechnicianReports", "Technician")" class="menu-item" data-menu="Reports">
+            <span class="icon">📋</span>
+            <span>Reports</span>
+        </a>
+        <a href="@Url.Action("TechnicianRequest", "Technician")" class="menu-item" data-menu="Request">
+            <span class="icon">📋</span>
+            <span>Request</span>
+        </a>
+        <a href="@Url.Action("TechnicianSchedule", "Technician")" class="menu-item" data-menu="Schedule">
+            <span class="icon">📋</span>
+            <span>Schedule</span>
+        </a>
+        <div class="profile">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
+            <div class="profile-info">
+                <span>Rodrigo</span>
+                <span class="role">Proprietor</span>
+            </div>
+            <span class="logout-arrow">⮞</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="table-container">
+            <h2 class="text-center mb-4">INSPECTION SUMMARY</h2>
+            <form>
+                <div class="row g-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="dateInspection" class="form-label">Date Inspection:</label>
+                        <input type="date" class="form-control" id="dateInspection">
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="inspectorName" class="form-label">Inspector Name:</label>
+                        <input type="text" class="form-control" id="inspectorName">
+                    </div>
+                </div>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="clientName" class="form-label">Client Name:</label>
+                        <input type="text" class="form-control" id="clientName">
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="address" class="form-label">Address:</label>
+                        <input type="text" class="form-control" id="address">
+                    </div>
+                </div>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="contactInfo" class="form-label">Contact Information:</label>
+                        <input type="text" class="form-control" id="contactInfo">
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="nextInspectionDate" class="form-label">Suggested Date for Next Inspection:</label>
+                        <input type="date" class="form-control" id="nextInspectionDate">
+                    </div>
+                </div>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="inspectionType" class="form-label">Inspection Type:</label>
+                        <select class="form-select" id="inspectionType">
+                            <option selected disabled>Select</option>
+                            <option>Initial</option>
+                            <option>Routine</option>
+                            <option>Follow Up</option>
+                            <option>Food Safety Compliance</option>
+                            <option>Others</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="area" class="form-label">Areas:</label>
+                        <select class="form-select" id="area">
+                            <option selected disabled>Select</option>
+                            <option>Kitchen</option>
+                            <option>Storage Areas</option>
+                            <option>Bathrooms</option>
+                            <option>Basement/Attics</option>
+                            <option>Outdoor Areas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="treatmentType" class="form-label">Treatment Type:</label>
+                        <select class="form-select" id="treatmentType">
+                            <option selected disabled>Select</option>
+                            <option>Chemical Spray</option>
+                            <option>Bait Stations</option>
+                            <option>Traps</option>
+                            <option>Exclusion Methods</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="pestType" class="form-label">Pest Type:</label>
+                        <select class="form-select" id="pestType">
+                            <option selected disabled>Select</option>
+                            <option>Rodent</option>
+                            <option>Termites</option>
+                            <option>Mosquito</option>
+                            <option>Ants</option>
+                            <option>Cockroach</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="suggestedActions" class="form-label">Suggested Actions:</label>
+                        <select class="form-select" id="suggestedActions">
+                            <option selected disabled>Select</option>
+                            <option>Repair Water Leaks</option>
+                            <option>Seal Entry Works</option>
+                            <option>Improve Waste Disposal</option>
+                            <option>Remove Clutter</option>
+                            <option>Store Food Properly</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <label for="severityLevel" class="form-label">Severity Level:</label>
+                        <select class="form-select" id="severityLevel">
+                            <option selected disabled>Select</option>
+                            <option>Low</option>
+                            <option>Moderate</option>
+                            <option>Severe</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="safetyMeasures" class="form-label">Safety Measures:</label>
+                        <select class="form-select" id="safetyMeasures">
+                            <option selected disabled>Select</option>
+                            <option>Covered Food Items</option>
+                            <option>Ventilated Treatment Area</option>
+                            <option>Restricted Access to Treated Areas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/proSidebar.js"></script>
+</body>
+
+</html>

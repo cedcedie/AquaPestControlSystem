@@ -3,3 +3,55 @@
 *@
 @{
 }
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Activity Log</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="~/css/output.css" media="all" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+</head>
+<body style="background-color: #8ecae6;">
+    <div class="sidebar" id="menu">
+        <h2>Aquarius Pest Control Services</h2>
+
+
+        <a href="@Url.Action("TechnicianDashboard", "Technician")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="@Url.Action("TechnicianReports", "Technician")" class="menu-item" data-menu="Reports">
+            <span class="icon">📋</span>
+            <span>Reports</span>
+        </a>
+            <a href="@Url.Action("TechnicianRequest", "Technician")" class="menu-item" data-menu="Request">
+            <span class="icon">📋</span>
+            <span>Request</span>
+        </a>
+
+            <a href="@Url.Action("TechnicianSchedule", "Technician")" class="menu-item" data-menu="Schedule">
+            <span class="icon">📋</span>
+            <span>Schedule</span>
+        </a>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
+            <div class="profile-info">
+                <span>Rodrigo</span>
+                <span class="role">Proprietor</span>
+            </div>
+            <span class="logout-arrow">⮞</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="table-container">
+
+        </div>
+    </div>
+    <script src="~/js/proSidebar.js"></script>
+</body>
