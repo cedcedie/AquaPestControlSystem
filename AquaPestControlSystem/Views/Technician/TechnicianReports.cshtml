@@ -1,7 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
 <head>
     <meta charset="UTF-8">
@@ -10,9 +7,84 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/output.css" media="all" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
-      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
-       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+    <style>
+        /* To prevent shrinking and keep original padding/margin */
+        .content {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100vh; /* Ensure the content fills the screen */
+        }
+
+        .table-container {
+            padding: 20px;
+            margin: 10px; /* Keep margin and padding of table-container */
+            flex: 1 0 auto; /* Ensure containers take full space without shrinking */
+            box-sizing: border-box; /* Ensure padding is included in the width */
+
+        }
+
+        .col-md-6 {
+            padding-left: 15px; /* Add padding left */
+            padding-right: 15px; /* Add padding right */
+            display: flex;
+            flex: 1 0 50%; /* Prevent shrinking, take 50% width */
+            flex-direction: column;
+        }
+
+        .table-container h2 {
+            margin-bottom: 20px;
+        }
+
+        /* Ensure table is responsive */
+        .table {
+            width: 100%;
+            table-layout: fixed; /* Avoid table content from expanding container */
+        }
+
+        .table th, .table td {
+            text-align: center;
+            padding: 8px;
+        }
+
+        /* Style for form fields in rows */
+        .form-label {
+            margin-bottom: 8px;
+        }
+
+        .form-control, .form-select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Ensure there is some margin between rows */
+        .row {
+            margin-bottom: 15px;
+        }
+
+        /* Style for the submit button */
+        .btn {
+            padding: 10px 30px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        /* Align file input to match form fields */
+        input[type="file"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        /* Image upload styling */
+        #problemImage {
+            text-align: left;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
@@ -44,128 +116,155 @@
     </div>
 
     <div class="content">
-        <div class="table-container">
-            <h2 class="text-center mb-4">INSPECTION SUMMARY</h2>
-            <form>
-                <div class="row g-3">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="dateInspection" class="form-label">Date Inspection:</label>
-                        <input type="date" class="form-control" id="dateInspection">
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <label for="inspectorName" class="form-label">Inspector Name:</label>
-                        <input type="text" class="form-control" id="inspectorName">
-                    </div>
-                </div>
-                <div class="row g-3 mt-3">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="clientName" class="form-label">Client Name:</label>
-                        <input type="text" class="form-control" id="clientName">
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <label for="address" class="form-label">Address:</label>
-                        <input type="text" class="form-control" id="address">
-                    </div>
-                </div>
-                <div class="row g-3 mt-3">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="contactInfo" class="form-label">Contact Information:</label>
-                        <input type="text" class="form-control" id="contactInfo">
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <label for="nextInspectionDate" class="form-label">Suggested Date for Next Inspection:</label>
-                        <input type="date" class="form-control" id="nextInspectionDate">
-                    </div>
-                </div>
-                <div class="row g-3 mt-3">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="inspectionType" class="form-label">Inspection Type:</label>
-                        <select class="form-select" id="inspectionType">
-                            <option selected disabled>Select</option>
-                            <option>Initial</option>
-                            <option>Routine</option>
-                            <option>Follow Up</option>
-                            <option>Food Safety Compliance</option>
-                            <option>Others</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <label for="area" class="form-label">Areas:</label>
-                        <select class="form-select" id="area">
-                            <option selected disabled>Select</option>
-                            <option>Kitchen</option>
-                            <option>Storage Areas</option>
-                            <option>Bathrooms</option>
-                            <option>Basement/Attics</option>
-                            <option>Outdoor Areas</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row g-3 mt-3">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="treatmentType" class="form-label">Treatment Type:</label>
-                        <select class="form-select" id="treatmentType">
-                            <option selected disabled>Select</option>
-                            <option>Chemical Spray</option>
-                            <option>Bait Stations</option>
-                            <option>Traps</option>
-                            <option>Exclusion Methods</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <label for="pestType" class="form-label">Pest Type:</label>
-                        <select class="form-select" id="pestType">
-                            <option selected disabled>Select</option>
-                            <option>Rodent</option>
-                            <option>Termites</option>
-                            <option>Mosquito</option>
-                            <option>Ants</option>
-                            <option>Cockroach</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row g-3 mt-3">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="suggestedActions" class="form-label">Suggested Actions:</label>
-                        <select class="form-select" id="suggestedActions">
-                            <option selected disabled>Select</option>
-                            <option>Repair Water Leaks</option>
-                            <option>Seal Entry Works</option>
-                            <option>Improve Waste Disposal</option>
-                            <option>Remove Clutter</option>
-                            <option>Store Food Properly</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <label for="severityLevel" class="form-label">Severity Level:</label>
-                        <select class="form-select" id="severityLevel">
-                            <option selected disabled>Select</option>
-                            <option>Low</option>
-                            <option>Moderate</option>
-                            <option>Severe</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row g-3 mt-3">
-                    <div class="col-md-6 col-sm-12">
-                        <label for="safetyMeasures" class="form-label">Safety Measures:</label>
-                        <select class="form-select" id="safetyMeasures">
-                            <option selected disabled>Select</option>
-                            <option>Covered Food Items</option>
-                            <option>Ventilated Treatment Area</option>
-                            <option>Restricted Access to Treated Areas</option>
-                        </select>
+        <div class="container">
+            <div class="row">
+                <!-- Left Column: Inspection Form -->
+                <div class="col-md-6">
+                    <div class="table-container">
+                        <h2 class="text-center mb-4">INSPECTION SUMMARY</h2>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="dateInspection" class="form-label">Date Inspection:</label>
+                                    <input type="date" class="form-control" id="dateInspection">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inspectorName" class="form-label">Inspector Name:</label>
+                                    <input type="text" class="form-control" id="inspectorName">
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="clientName" class="form-label">Client Name:</label>
+                                    <input type="text" class="form-control" id="clientName">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="address" class="form-label">Address:</label>
+                                    <input type="text" class="form-control" id="address">
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="contactInfo" class="form-label">Contact Information:</label>
+                                    <input type="text" class="form-control" id="contactInfo">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inspectionType" class="form-label">Inspection Type:</label>
+                                    <select class="form-select" id="inspectionType">
+                                        <option selected disabled>Select</option>
+                                        <option>Initial</option>
+                                        <option>Routine</option>
+                                        <option>Follow Up</option>
+                                        <option>Food Safety Compliance</option>
+                                        <option>Others</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="area" class="form-label">Areas:</label>
+                                    <select class="form-select" id="area">
+                                        <option selected disabled>Select</option>
+                                        <option>Kitchen</option>
+                                        <option>Storage Areas</option>
+                                        <option>Bathrooms</option>
+                                        <option>Basement/Attics</option>
+                                        <option>Outdoor Areas</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="treatmentType" class="form-label">Treatment Type:</label>
+                                    <select class="form-select" id="treatmentType">
+                                        <option selected disabled>Select</option>
+                                        <option>Chemical Spray</option>
+                                        <option>Bait Stations</option>
+                                        <option>Traps</option>
+                                        <option>Exclusion Methods</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="pestType" class="form-label">Pest Type:</label>
+                                    <select class="form-select" id="pestType">
+                                        <option selected disabled>Select</option>
+                                        <option>Rodent</option>
+                                        <option>Termites</option>
+                                        <option>Mosquito</option>
+                                        <option>Ants</option>
+                                        <option>Cockroach</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="salesInput" class="form-label">Sales Input:</label>
+                                    <input type="text" class="form-control" id="salesInput" placeholder="Enter sales details">
+                                </div>
+                            </div>
+
+                            <!-- Aligning Image Upload to match textboxes -->
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="problemImage" class="form-label">Add Image for Problem:</label>
+                                    <input type="file" class="form-control" id="problemImage" accept="image/*" multiple>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                <!-- Right Column: Previous Reports Table -->
+                <div class="col-md-6">
+                    <div class="table-container">
+                        <h2 class="text-center mb-4">Previous Reports</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Date</th>
+                                    <th>Inspector Name</th>
+                                    <th>Client Name</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#001</td>
+                                    <td>2024-12-05</td>
+                                    <td>John Doe</td>
+                                    <td>ABC Company</td>
+                                    <td>Completed</td>
+                                </tr>
+                                <tr>
+                                    <td>#002</td>
+                                    <td>2024-12-06</td>
+                                    <td>Jane Smith</td>
+                                    <td>XYZ Corp</td>
+                                    <td>Pending</td>
+                                </tr>
+                                <tr>
+                                    <td>#003</td>
+                                    <td>2024-12-07</td>
+                                    <td>Rodrigo</td>
+                                    <td>LMN Industries</td>
+                                    <td>Completed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <script src="/js/proSidebar.js"></script>
 </body>
-
 </html>
