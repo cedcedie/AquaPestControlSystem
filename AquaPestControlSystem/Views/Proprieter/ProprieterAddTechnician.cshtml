@@ -1,8 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model AquaPestControlSystem.Models.TechnicianViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +8,10 @@
     <title>Aquarius Pest Control Services - Activity Log</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/output.css" media="all" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
 </head>
 
 <body style="background-color: #8ecae6;">
@@ -62,64 +62,49 @@
                 <h2 class="text-center text-2xl font-semibold">Add Technician</h2>
             </div>
             <form asp-action="ProprieterAddTechnician" class="space-y-6">
-                <div class="gap-6 grid grid-cols-3">
+                <fieldset class="gap-6 grid grid-cols-1 sm:grid-cols-3">
                     <div class="form-group">
                         <label for="firstName" class="mb-2 block text-sm font-semibold">First Name</label>
-                        <input type="text" id="firstName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter first name" required>
+                        <input asp-for="FirstName" type="text" id="firstName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter first name" required>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
                         <label for="middleName" class="mb-2 block text-sm font-semibold">Middle Name</label>
-                        <input type="text" id="middleName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter middle name">
+                        <input asp-for="MiddleName" type="text" id="middleName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter middle name" required>
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
                         <label for="lastName" class="mb-2 block text-sm font-semibold">Last Name</label>
-                        <input type="text" id="lastName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter last name" required>
+                        <input asp-for="LastName" type="text" id="lastName" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter last name" required>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
-                </div>
-                <div class="gap-6 grid grid-cols-2">
+                </fieldset>
+
+                <fieldset class="gap-6 grid grid-cols-1 sm:grid-cols-2">
                     <div class="form-group">
                         <label for="phone" class="mb-2 block text-sm font-semibold">Phone Number</label>
-                        <input type="tel" id="phone" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter phone number" required>
+                        <input asp-for="ContactNum" type="tel" id="phone" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter phone number" required>
+                        <span asp-validation-for="ContactNum" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="email" class="mb-2 block text-sm font-semibold">Email</label>
-                        <input type="email" id="email" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter email" required>
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="address" class="mb-2 block text-sm font-semibold">Address</label>
-                    <textarea id="address" class="p-3 border-gray-300 w-full rounded-lg border text-lg" rows="3" placeholder="Enter address" required></textarea>
-                </div>
-                <div class="gap-6 grid grid-cols-3">
                     <div class="form-group">
-                        <label for="dateOfHire" class="mb-2 block text-sm font-semibold">Date of Hire</label>
-                        <input type="date" id="dateOfHire" class="p-3 border-gray-300 w-full rounded-lg border text-lg" required>
+                        <label for="address" class="mb-2 block text-sm font-semibold">Address</label>
+                        <input asp-for="Address" type="text" id="text" class="p-3 border-gray-300 w-full rounded-lg border text-lg" placeholder="Enter email" required>
+                        <span asp-validation-for="Address" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label class="mb-2 block text-sm font-semibold">Areas of Expertise</label>
-                        <div class="gap-2 grid grid-cols-1">
-                            <div>
-                                <input type="checkbox" id="rodentControl" name="expertise" value="Rodent Control">
-                                <label for="rodentControl" class="ml-2">Rodent Control</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="antControl" name="expertise" value="Ant Control">
-                                <label for="antControl" class="ml-2">Ant Control</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="pestControl" name="expertise" value="Pest Control">
-                                <label for="pestControl" class="ml-2">Pest Control</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="termiteControl" name="expertise" value="Termite Control">
-                                <label for="termiteControl" class="ml-2">Termite Control</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="bedBugControl" name="expertise" value="Bed Bug Control">
-                                <label for="bedBugControl" class="ml-2">Bed Bug Control</label>
-                            </div>
-                        </div>
+                </fieldset>
+
+                <div class="row g-3 mt-3">
+                    <div class="col-md-6 col-sm-12">
+                        <label for="status" class="form-label">Status</label>
+                        <select asp-for="Status" class="form-control" id="status">
+                            <option selected disabled>Select</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group mt-8 text-center">
