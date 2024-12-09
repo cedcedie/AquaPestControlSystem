@@ -1,8 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<AquaPestControlSystem.Models.TechnicianViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,46 +73,34 @@
                     <tr>
                         <th>Technician Name</th>
                         <th>Phone Number</th>
-                        <th>Scheduled On</th>
-                        <th>Work Status</th>
+                        <th>Address</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="Technicians">
-                    <tr>
-                        <td>John Doe</td>
-                        <td>(123) 456-7890</td>
-                        <td>09/10/2024</td>
-                        <td><button class="status-btn active">Active</button></td>
-                        <td>
-                            <a href="@Url.Action("ProprieterEditTechnician", "Proprieter")">
-                                <button class="edit-btn">Edit</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Jane Smith</td>
-                        <td>(098) 765-4321</td>
-                        <td>09/08/2024</td>
-                        <td><button class="status-btn waiting">Waiting</button></td>
-                        <td>
-                            <a href="@Url.Action("ProprieterEditTechnician", "Proprieter")">
-                                <button class="edit-btn">Edit</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Mike Johnson</td>
-                        <td>(555) 123-4567</td>
-                        <td>09/05/2024</td>
-                        <td><button class="status-btn inactive">Inactive</button></td>
-
-                        <td>
-                            <a href="@Url.Action("ProprieterEditTechnician", "Proprieter")">
-                                <button class="edit-btn">Edit</button>
-                            </a>
+                <tbody>
+                    @if(Model != null && Model.Any())
+                    {
+                        @foreach (var technician in Model)
+                        {
+                            <tr>
+                                <td>@technician.FullName</td>
+                                <td>@technician.ContactNum</td>
+                                <td>@technician.Address</td>
+                                <td>@technician.Status</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6">
+                                <div>
+                                    No Technicians Available.
+                                </div>
                             </td>
-                    </tr>
+                        </tr>
+                    }
                 </tbody>
             </table>
             <div class="pagination">

@@ -3,6 +3,7 @@
 *@
 @{
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +61,7 @@
             <div class="header mb-6">
                 <h2 class="text-center text-2xl font-semibold">Add Technician</h2>
             </div>
-            <form class="space-y-6">
+            <form asp-action="ProprieterAddTechnician" class="space-y-6">
                 <div class="gap-6 grid grid-cols-3">
                     <div class="form-group">
                         <label for="firstName" class="mb-2 block text-sm font-semibold">First Name</label>

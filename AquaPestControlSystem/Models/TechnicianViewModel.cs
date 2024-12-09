@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Cors;
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace AquaPestControlSystem.Models
 {
-    public class CustomerViewModel
+    public class TechnicianViewModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CustomerId { get; set; }
+        public int TechnicianId { get; set; }
 
         [DisplayName("First Name")]
         public string FirstName { get; set; }
@@ -24,16 +22,16 @@ namespace AquaPestControlSystem.Models
         [DisplayName("Contact Number")]
         public long ContactNum { get; set; }
 
-        [DisplayName("Email")]
-        public string Email { get; set; }
-
         [DisplayName("Address")]
         public string Address { get; set; }
+
+        [DisplayName("Status")]
+        public string Status { get; set; }
 
         [DisplayName("Name")]
         public string FullName
         {
-            get { return FirstName + " " + MiddleName + " " + LastName; } 
+            get { return FirstName + " " + MiddleName + " " + LastName; }
         }
     }
 }

@@ -41,9 +41,31 @@ namespace AquaPestControlSystem.Controllers
             }
             return View(customerList);
         }
+        [HttpGet]
         public IActionResult ProprieterTechnicians()
         {
-            return View();
+            List<TechnicianViewModel> technicianList = new List<TechnicianViewModel>();
+            var technician = _context.Technicians.ToList();
+
+            if(technician != null)
+            {
+                foreach(var technicians in technician)
+                {
+                    var TechnicianViewModel = new TechnicianViewModel
+                    {
+                        TechnicianId = technicians.TechnicianId,
+                        FirstName =technicians.FirstName,
+                        LastName = technicians.LastName,
+                        MiddleName = technicians.MiddleName,
+                        ContactNum = technicians.ContactNum,
+                        Address = technicians.Address,
+                        Status = technicians.Status
+                    };
+                    technicianList.Add(TechnicianViewModel);
+                }
+                return View(technicianList);
+            }
+            return View(technicianList);
         }
 
         public IActionResult ProprieterReports()
@@ -76,42 +98,39 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ProprieterAddCustomer()
+        {
+            return View();
+        }
+
         [HttpPost]
+        [Route("Proprieter/ProprieterAddCustomer")]
         public IActionResult ProprieterAddCustomer(CustomerViewModel customerData)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                var customer = new Customer
                 {
-                    var customer = new Customer
-                    {
-                        FirstName = customerData.FirstName,
-                        LastName = customerData.LastName,
-                        MiddleName = customerData.MiddleName,
-                        ContactNum = customerData.ContactNum,
-                        Email = customerData.Email,
-                        Address = customerData.Address
-                    };
+                    FirstName = customerData.FirstName,
+                    LastName = customerData.LastName,
+                    MiddleName = customerData.MiddleName,
+                    ContactNum = customerData.ContactNum,
+                    Email = customerData.Email,
+                    Address = customerData.Address
+                };
 
-                    _context.Customers.Add(customer);
-                    _context.SaveChanges();
-
-                    TempData["successMessage"] = " Customer created successfully.";
-                    return RedirectToAction("ProprieterCustomer");
-                }
-                else
-                {
-                    TempData["errorMessage"] = " Model data is not valid";
-                    return View();
-                }
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+                return RedirectToAction("ProprieterCustomer");
             }
-            catch (Exception ex)
+            else
             {
-                TempData["errorMessage"] = ex.Message;
+                TempData["errorMessage"] = " Model data is not valid";
                 return View();
             }
-
         }
+
         public IActionResult ProprieterAddTechnician()
         {
             return View();
