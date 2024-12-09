@@ -131,9 +131,36 @@ namespace AquaPestControlSystem.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult ProprieterAddTechnician()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ProprieterAddTechnician(TechnicianViewModel technicianData)
+        {
+            if (ModelState.IsValid)
+            {
+                var technician = new Technician
+                {
+                    FirstName = technicianData.FirstName,
+                    LastName = technicianData.LastName,
+                    MiddleName = technicianData.MiddleName,
+                    ContactNum = technicianData.ContactNum,
+                    Address = technicianData.Address,
+                    Status = technicianData.Status
+                };
+
+                _context.Technicians.Add(technician);
+                _context.SaveChanges();
+                return RedirectToAction("ProprieterTechnician");
+            }
+            else
+            {
+                TempData["errorMessage"] = " Model data is not valid";
+                return View();
+            }
         }
         public IActionResult ProprieterEditTechnician()
         {
