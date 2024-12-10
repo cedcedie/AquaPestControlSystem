@@ -1,0 +1,137 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Activity Log</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .table-container {
+        min-height: 820px; /* Adjust as needed */
+    }
+</style>
+</head>
+<body style="background-color: #8ecae6;">
+    <div class="sidebar" id="menu">
+        <h2>Aquarius Pest Control Services</h2>
+
+        <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
+            <span class="icon">📋</span>
+            <span>Appointments</span>
+        </a>
+        <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
+            <span class="icon">📋</span>
+            <span>Customers</span>
+        </a>
+        <a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
+            <span class="icon">🔧</span>
+            <span>Technicians</span>
+        </a>
+        <a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
+            <span class="icon">📊</span>
+            <span>Reports</span>
+        </a>
+        <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
+            <span class="icon">📑</span>
+            <span>Activity Log</span>
+        </a>
+        <a href="@Url.Action("ProprieterArchives", "Proprieter")" class="menu-item" data-menu="Archives">
+            <span class="icon">📑</span>
+            <span>Archives</span>
+        </a>
+
+        <div class="profile">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
+            <div class="profile-info">
+                <span>Rodrigo</span>
+                <span class="role">Proprietor</span>
+            </div>
+            <span class="logout-arrow">⮞</span>
+        </div>
+    </div>
+<div class="content" style="padding-left: 150px; padding-right: 150px;">
+    <div class="row justify-content-center">
+
+        <!-- Available Technicians Table -->
+        <div class="col-lg-6 col-md-12 mb-4"> <!-- Increase width for large screens -->
+            <div class="table-container">
+                <h2 class="text-center mb-4">Available Technicians</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Technician Name</th>
+                            <th>Preferred Schedule</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>09:00 AM - 12:00 PM</td>
+                            <td><button class="btn btn-primary">Assign</button></td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>01:00 PM - 04:00 PM</td>
+                            <td><button class="btn btn-primary">Assign</button></td>
+                        </tr>
+                        <tr>
+                            <td>Rodrigo</td>
+                            <td>10:00 AM - 02:00 PM</td>
+                            <td><button class="btn btn-primary">Assign</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Assigned Technicians Table -->
+        <div class="col-lg-6 col-md-12 mb-4"> <!-- Increase width for large screens -->
+            <div class="table-container">
+                <h2 class="text-center mb-4">Assigned Technicians</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Technician Name</th>
+                            <th>Date Appointment</th>
+                            <th>Pest Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>2024-12-05</td>
+                            <td>Rodent</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>2024-12-06</td>
+                            <td>Termites</td>
+                        </tr>
+                        <tr>
+                            <td>Rodrigo</td>
+                            <td>2024-12-07</td>
+                            <td>Ants</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="~/js/proSidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

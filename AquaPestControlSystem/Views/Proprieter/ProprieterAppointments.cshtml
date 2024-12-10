@@ -17,6 +17,51 @@
         table th, table td {
             border-bottom: 1px solid #ccc;
         }
+        .assign-btn {
+   background-color: #339af0; /* Blue for View button */
+  color: rgb(0, 0, 0); /* Black text */
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.assign-btn:hover {
+     background-color: #8ecae6; 
+}
+
+.status-btn {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white; /* White text for better contrast */
+    font-weight: bold;
+}
+
+.status-btn.to-be-assigned {
+    background-color: #ff3b30; /* Bright red */
+}
+.status-btn.to-be-assigned:hover {
+    background-color: #e60000; /* Darker red for hover */
+}
+
+/* Styles for "Ongoing" status */
+.status-btn.ongoing {
+    background-color: #ff9500; /* Bright orange */
+}
+.status-btn.ongoing:hover {
+    background-color: #ff6600; /* Darker orange for hover */
+}
+
+/* Styles for "Completed" status */
+.status-btn.completed {
+    background-color: #4cd964; /* Bright green */
+}
+.status-btn.completed:hover {
+    background-color: #28a745; /* Darker green for hover */
+}
     </style>
 </head>
 
@@ -80,66 +125,67 @@
                 </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>UserName</th>
-                        <th>Schedule</th>
-                        <th>Pest Problem</th>
-                        <th>Address</th>
-                        <th>Status</th>
-                        <th>View</th>
-                    </tr>
-                </thead>
-                <tbody id="Appointments">
-                    <tr>
-                        <td>johndoe@example.com</td>
-                        <td>09/10/2024</td>
-                        <td>Termite Infestation</td>
-                        <td>123 Oak Street, Cityville</td>
-                        <td><button class="status-btn to-be-assigned">To be Assigned</button></td>
-                        <td>
-                            <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
-                                <button class="view-btn">View</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>janesmith@example.com</td>
-                        <td>09/08/2024</td>
-                        <td>Rodent Control</td>
-                        <td>456 Maple Avenue, Townsville</td>
-                        <td><button class="status-btn ongoing">Ongoing</button></td>
-                        <td>
-                            <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
-                                <button class="view-btn">View</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>michaelbrown@example.com</td>
-                        <td>09/05/2024</td>
-                        <td>Bed Bugs</td>
-                        <td>789 Pine Road, Suburbia</td>
-                        <td><button class="status-btn completed">Completed</button></td>
-                        <td>
-                            <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
-                                <button class="view-btn">View</button>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+          <table>
+    <thead>
+        <tr>
+            <th>UserName</th>
+            <th>Schedule</th>
+            <th>Pest Problem</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>Assign</th> <!-- Assign button column -->
+            <th>View</th>   <!-- View button column -->
+        </tr>
+    </thead>
+    <tbody id="Appointments">
+        <tr>
+            <td>johndoe@example.com</td>
+            <td>09/10/2024</td>
+            <td>Termite Infestation</td>
+            <td>123 Oak Street, Cityville</td>
+            <td><button class="status-btn to-be-assigned">To be Assigned</button></td>
+            <td>
+                <button class="assign-btn" onclick="assignTechnician('johndoe@example.com')">Assign</button>
+            </td> <!-- Assign button -->
+            <td>
+                <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
+                    <button class="view-btn">View</button>
+                </a>
+            </td> <!-- View button -->
+        </tr>
+        <tr>
+            <td>janesmith@example.com</td>
+            <td>09/08/2024</td>
+            <td>Rodent Control</td>
+            <td>456 Maple Avenue, Townsville</td>
+            <td><button class="status-btn ongoing">Ongoing</button></td>
+            <td>
+                <button class="assign-btn" onclick="assignTechnician('janesmith@example.com')">Assign</button>
+            </td> <!-- Assign button -->
+            <td>
+                <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
+                    <button class="view-btn">View</button>
+                </a>
+            </td> <!-- View button -->
+        </tr>
+        <tr>
+            <td>michaelbrown@example.com</td>
+            <td>09/05/2024</td>
+            <td>Bed Bugs</td>
+            <td>789 Pine Road, Suburbia</td>
+            <td><button class="status-btn completed">Completed</button></td>
+            <td>
+                <button class="assign-btn" onclick="assignTechnician('michaelbrown@example.com')">Assign</button>
+            </td> <!-- Assign button -->
+            <td>
+                <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
+                    <button class="view-btn">View</button>
+                </a>
+            </td> <!-- View button -->
+        </tr>
+    </tbody>
+</table>
 
-            <div class="pagination">
-                <span id="paginationInfo">Showing 1 to 3 of 3 entries</span>
-                <div>
-                    <button id="prevButton">Previous</button>
-                    <button id="nextButton">Next</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="~/js/proSidebar.js"></script>
 </body>
     </html>

@@ -47,14 +47,14 @@ namespace AquaPestControlSystem.Controllers
             List<TechnicianViewModel> technicianList = new List<TechnicianViewModel>();
             var technician = _context.Technicians.ToList();
 
-            if(technician != null)
+            if (technician != null)
             {
-                foreach(var technicians in technician)
+                foreach (var technicians in technician)
                 {
                     var TechnicianViewModel = new TechnicianViewModel
                     {
                         TechnicianId = technicians.TechnicianId,
-                        FirstName =technicians.FirstName,
+                        FirstName = technicians.FirstName,
                         LastName = technicians.LastName,
                         MiddleName = technicians.MiddleName,
                         ContactNum = technicians.ContactNum,
@@ -87,7 +87,7 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
-        
+
         public IActionResult ProprieterViewCustomer()
         {
             return View();
@@ -197,6 +197,11 @@ namespace AquaPestControlSystem.Controllers
 
 
         public IActionResult ProprieterRequestAppointments()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterAssignAppointment()
         {
             return View();
         }
