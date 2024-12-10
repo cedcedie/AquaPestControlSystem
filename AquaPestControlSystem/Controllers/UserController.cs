@@ -18,5 +18,9 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
+        public IActionResult UserLogin()
+        {
+            return View();
+        }
     }
 }

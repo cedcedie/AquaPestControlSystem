@@ -22,5 +22,9 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
+        public IActionResult TechnicianProfile()
+        {
+            return View();
+        }
     }
 }
