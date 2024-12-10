@@ -1,49 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@{
+﻿@{
 }
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aquarius Pest Control Services - Activity Log</title>
+    <title>Aquarius Pest Control Services - Appointment Details</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/output.css" media="all" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-    .table-container {
-        min-height: 820px; /* Adjust as needed */
-    }
-</style>
+        .table-container {
+            min-height: 820px; /* Adjust as needed */
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-container {
+            max-width: 900px; /* Adjust the max-width for a larger container */
+            margin: 0 auto; /* Centers the form horizontally */
+            padding: 20px; /* Add padding inside the container */
+        }
+        .content {
+            padding: 30px;
+        }
+        .form-control-file {
+            padding: 6px 12px;
+        }
+    </style>
 </head>
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
-<a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
-    <span class="icon">📋</span>
-    <span>Dashboard</span>
-</a>
-<a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
-    <span class="icon">📅</span>
-    <span>Appointments</span>
-</a>
-<a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
-    <span class="icon">👥</span>
-    <span>Customers</span>
-</a>
-<a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
-    <span class="icon">🔧</span>
-    <span>Technicians</span>
-</a>
-<a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
-    <span class="icon">📊</span>
-    <span>Reports</span>
-</a>
-<a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
-    <span class="icon">📑</span>
-    <span>Activity Log</span>
-</a>
+        <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
+            <span class="icon">📅</span>
+            <span>Appointments</span>
+        </a>
+        <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
+            <span class="icon">👥</span>
+            <span>Customers</span>
+        </a>
+        <a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
+            <span class="icon">🔧</span>
+            <span>Technicians</span>
+        </a>
+        <a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
+            <span class="icon">📊</span>
+            <span>Reports</span>
+        </a>
+        <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
+            <span class="icon">📑</span>
+            <span>Activity Log</span>
+        </a>
 
         <div class="profile">
             <img src="https://via.placeholder.com/40" alt="Profile Picture">
@@ -52,6 +62,78 @@
                 <span class="role">Proprietor</span>
             </div>
             <span class="logout-arrow">⮞</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="table-container form-container">
+                        <h2 class="text-center mb-4">Appointment Details</h2>
+                        <form id="appointmentForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="appointmentId" class="form-label">Appointment ID:</label>
+                                    <input type="text" class="form-control" id="appointmentId" placeholder="Enter Appointment ID">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="firstName" class="form-label">First Name:</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="middleName" class="form-label">Middle Name:</label>
+                                    <input type="text" class="form-control" id="middleName" placeholder="Enter Middle Name">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="lastName" class="form-label">Last Name:</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="contactNumber" class="form-label">Contact Number:</label>
+                                    <input type="tel" class="form-control" id="contactNumber" placeholder="Enter Contact Number">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="address" class="form-label">Address:</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Enter Address">
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="pestProblem" class="form-label">Pest Problem:</label>
+                                    <input type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="schedule" class="form-label">Schedule:</label>
+                                    <input type="datetime-local" class="form-control" id="schedule">
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <label for="problemImage" class="form-label">Add Image for Problem:</label>
+                                    <input type="file" class="form-control-file" id="problemImage" accept="image/*" multiple>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
