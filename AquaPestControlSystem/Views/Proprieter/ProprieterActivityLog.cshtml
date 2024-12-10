@@ -116,7 +116,6 @@
         .pagination button:hover {
             background-color: #f0f0f0;
         }
-
     </style>
 </head>
 
@@ -157,7 +156,7 @@
                     <span>Rodrigo</span>
                     <span class="role">Proprietor</span>
                 </div>
-                <span class="logout-arrow" style="cursor: pointer;">⮞</span>
+                <span class="logout-arrow" style="cursor: pointer; margin-left: 60px;">⮞</span>
             </a>
         </div>
     </div>
@@ -188,6 +187,7 @@
                     </tr>
                 </thead>
                 <tbody id="Archives">
+
                 </tbody>
             </table>
             <div class="pagination">
@@ -200,12 +200,15 @@
         </div>
     </div>
 
-     <div id="logoutModal" class="modal" aria-labelledby="logoutModalTitle" role="dialog">
+    <div id="logoutModal" class="modal" aria-labelledby="logoutModalTitle" role="dialog">
         <div class="modal-content">
             <span class="close" id="closeModal" aria-label="Close Modal">&times;</span>
             <h2 id="logoutModalTitle">Are you sure you want to log out?</h2>
             <div class="button-container">
-                <button class="logout-btn" onclick="logout()">Yes</button>
+                <a href="@Url.Action("UserLogin", "User")" class="logout-btn">
+                    <button onclick="logout()">Yes</button>
+                </a>
+
                 <button class="cancel-btn" onclick="closeModal()">No</button>
             </div>
         </div>
@@ -214,7 +217,6 @@
     <script src="~/js/proSidebar.js"></script>
 
     <script>
-   
         document.querySelector('.logout-arrow').addEventListener('click', function(event) {
             event.preventDefault(); 
             document.getElementById('logoutModal').style.display = 'block';
@@ -224,10 +226,6 @@
             document.getElementById('logoutModal').style.display = 'none';
         }
 
-        function logout() {
-            alert('Logging out...');
- 
-        }
         document.getElementById('closeModal').addEventListener('click', closeModal);
     </script>
 

@@ -9,21 +9,92 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .table-container {
-            min-height: 820px; /* Adjust as needed */
+            min-height: 820px;
         }
         .form-label {
             font-weight: bold;
         }
         .form-container {
-            max-width: 900px; /* Adjust the max-width for a larger container */
-            margin: 0 auto; /* Centers the form horizontally */
-            padding: 20px; /* Add padding inside the container */
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
         }
         .content {
             padding: 30px;
         }
         .form-control-file {
             padding: 6px 12px;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            overflow: auto;
+            padding-top: 100px;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .cancel-btn {
+            background-color: #607d8b;
+            color: white;
         }
     </style>
 </head>
@@ -56,12 +127,14 @@
         </a>
 
         <div class="profile">
-            <img src="https://via.placeholder.com/40" alt="Profile Picture">
-            <div class="profile-info">
-                <span>Rodrigo</span>
-                <span class="role">Proprietor</span>
-            </div>
-            <span class="logout-arrow">⮞</span>
+            <a href="@Url.Action("ProfileDetails", "User")" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
+                <div class="profile-info" style="margin-right: 10px;">
+                    <span>Rodrigo</span>
+                    <span class="role">Proprietor</span>
+                </div>
+                <span class="logout-arrow" style="cursor: pointer; margin-left: 60px;">⮞</span>
+            </a>
         </div>
     </div>
 
@@ -139,8 +212,33 @@
         </div>
     </div>
 
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal" aria-labelledby="logoutModalTitle" role="dialog">
+        <div class="modal-content">
+            <span class="close" id="closeModal" aria-label="Close Modal">&times;</span>
+            <h2 id="logoutModalTitle">Are you sure you want to log out?</h2>
+            <div class="button-container">
+                <a href="@Url.Action("UserLogin", "User")" class="logout-btn">
+                    <button onclick="logout()">Yes</button>
+                </a>
+                <button class="cancel-btn" onclick="closeModal()">No</button>
+            </div>
+        </div>
+    </div>
+
     <script src="~/js/proSidebar.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelector('.logout-arrow').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('logoutModal').style.display = 'block';
+        });
+
+        function closeModal() {
+            document.getElementById('logoutModal').style.display = 'none';
+        }
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+    </script>
 </body>
 </html>
