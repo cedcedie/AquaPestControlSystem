@@ -22,5 +22,13 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
+        public IActionResult UserCreateAccount()
+        {
+            return View();
+        }
+        public IActionResult UserForgotPassword()
+        {
+            return View();
+        }
     }
 }

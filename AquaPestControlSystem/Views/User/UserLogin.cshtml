@@ -1,178 +1,114 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Login";
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aquarius Pest Control Services - Customer Details</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="~/css/output.css" media="all" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        .form-bg{
-            background: #00b4ef;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6e7e8f, #343a40);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .form-horizontal{
-            background: #fff;
-            padding-bottom: 40px;
-            border-radius: 15px;
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-header {
             text-align: center;
-        }
-        .form-horizontal .heading{
-            display: block;
-            font-size: 35px;
-            font-weight: 700;
-            padding: 35px 0;
-            border-bottom: 1px solid #f0f0f0;
             margin-bottom: 30px;
         }
-        .form-horizontal .form-group{
-            padding: 0 40px;
-            margin: 0 0 25px 0;
-            position: relative;
+
+        .login-header h3 {
+            color: #007bff;
+            font-weight: 600;
         }
-        .form-horizontal .form-control{
-            background: #f0f0f0;
-            border: none;
-            border-radius: 20px;
-            box-shadow: none;
-            padding: 0 20px 0 45px;
-            height: 40px;
-            transition: all 0.3s ease 0s;
+
+        .form-control {
+            border-radius: 25px;
+            height: 45px;
+            padding-left: 20px;
         }
-        .form-horizontal .form-control:focus{
-            background: #e0e0e0;
-            box-shadow: none;
-            outline: 0 none;
+
+        .btn-primary {
+            width: 100%;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 18px;
         }
-        .form-horizontal .form-group i{
-            position: absolute;
-            top: 12px;
-            left: 60px;
-            font-size: 17px;
-            color: #c8c8c8;
-            transition : all 0.5s ease 0s;
+
+        .form-text {
+            text-align: center;
         }
-        .form-horizontal .form-control:focus + i{
-            color: #00b4ef;
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
         }
-        .form-horizontal .fa-question-circle{
-            display: inline-block;
-            position: absolute;
-            top: 12px;
-            right: 60px;
-            font-size: 20px;
-            color: #808080;
-            transition: all 0.5s ease 0s;
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
         }
-        .form-horizontal .fa-question-circle:hover{
-            color: #000;
-        }
-        .form-horizontal .main-checkbox{
-            float: left;
-            width: 20px;
-            height: 20px;
-            background: #11a3fc;
-            border-radius: 50%;
-            position: relative;
-            margin: 5px 0 0 5px;
-            border: 1px solid #11a3fc;
-        }
-        .form-horizontal .main-checkbox label{
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            cursor: pointer;
-        }
-        .form-horizontal .main-checkbox label:after{
-            content: "";
-            width: 10px;
-            height: 5px;
-            position: absolute;
-            top: 5px;
-            left: 4px;
-            border: 3px solid #fff;
-            border-top: none;
-            border-right: none;
-            background: transparent;
-            opacity: 0;
-            -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-        }
-        .form-horizontal .main-checkbox input[type=checkbox]{
-            visibility: hidden;
-        }
-        .form-horizontal .main-checkbox input[type=checkbox]:checked + label:after{
-            opacity: 1;
-        }
-        .form-horizontal .text{
-            float: left;
-            margin-left: 7px;
-            line-height: 20px;
-            padding-top: 5px;
-            text-transform: capitalize;
-        }
-        .form-horizontal .btn{
-            float: right;
-            font-size: 14px;
-            color: #fff;
-            background: #00b4ef;
-            border-radius: 30px;
-            padding: 10px 25px;
-            border: none;
-            text-transform: capitalize;
-            transition: all 0.5s ease 0s;
-        }
-        media only screen and (max-width: 479px){
-            .form-horizontal .form-group{
-                padding: 0 25px;
-            }
-            .form-horizontal .form-group i{
-                left: 45px;
-            }
-            .form-horizontal .btn{
-                padding: 10px 20px;
-            }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="form-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-offset-3 col-md-6">
-                    <form class="form-horizontal">
-                        <span class="heading">Log In</span>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email or Username">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        <div class="form-group help">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                            <i class="fa fa-lock"></i>
-                            <a href="#" class="fa fa-question-circle"></a>
-                        </div>
-                        <div class="form-group">
-                            <div class="main-checkbox">
-                                <input type="checkbox" value="None" id="checkbox1" name="check">
-                                <label for="checkbox1"></label>
-                            </div>
-                            <span class="text">Remember me</span>
-                            <button type="submit" class="btn btn-default">log in</button>
-                        </div>
-                    </form>
-                </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h3>Welcome to 2024 Aquarius Pest Control Services</h3>
+            <p class="text-muted">Please log in to continue.</p>
+        </div>
+
+        <form method="post" asp-action="Login">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="Username" placeholder="Enter your username" required />
             </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password" required />
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe" name="RememberMe" />
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Log In</button>
+
+            <div class="form-text">
+                <a href="/Account/UserForgotPassword">Forgot Password?</a> | 
+                <a href="/Account/Register">Create an Account</a>
+            </div>
+        </form>
+
+        <div class="footer">
+            <p>&copy; 2024 Aquarius Pest Control Services. All rights reserved.</p>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

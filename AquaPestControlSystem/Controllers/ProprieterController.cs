@@ -192,12 +192,6 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult ProprieterAddAppointment()
-        {
-
-        }
-
         public IActionResult ProprieterViewAppointments()
         {
             return View();
