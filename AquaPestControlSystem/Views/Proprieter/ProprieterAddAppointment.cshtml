@@ -1,5 +1,5 @@
-﻿@{
-}
+﻿@model AquaPestControlSystem.Models.AppointmentViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,12 +71,8 @@
                 <div class="col-md-8">
                     <div class="table-container form-container">
                         <h2 class="text-center mb-4">Appointment Details</h2>
-                        <form id="appointmentForm">
+                        <form action="ProprieterAddAppointment" id="appointmentForm">
                             <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="appointmentId" class="form-label">Appointment ID:</label>
-                                    <input type="text" class="form-control" id="appointmentId" placeholder="Enter Appointment ID">
-                                </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email:</label>
                                     <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
@@ -86,44 +82,51 @@
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <label for="firstName" class="form-label">First Name:</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                                    <input asp-for="FirstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="middleName" class="form-label">Middle Name:</label>
-                                    <input type="text" class="form-control" id="middleName" placeholder="Enter Middle Name">
+                                    <input asp-for="MiddleName" type="text" class="form-control" id="middleName" placeholder="Enter Middle Name">
+                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="lastName" class="form-label">Last Name:</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                                    <input asp-for="LastName" type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="contactNumber" class="form-label">Contact Number:</label>
-                                    <input type="tel" class="form-control" id="contactNumber" placeholder="Enter Contact Number">
+                                    <input asp-for="ContactNum" type="tel" class="form-control" id="contactNumber" placeholder="Enter Contact Number">
+                                    <span asp-validation-for="ContactNum" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="address" class="form-label">Address:</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Enter Address">
+                                    <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Enter Address">
+                                    <span asp-validation-for="Address" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="pestProblem" class="form-label">Pest Problem:</label>
-                                    <input type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem">
+                                    <input asp-for="PestProblem" type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem">
+                                    <span asp-validation-for="PestProblem" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="schedule" class="form-label">Schedule:</label>
-                                    <input type="datetime-local" class="form-control" id="schedule">
+                                    <input asp-for="Schedule" type="datetime-local" class="form-control" id="schedule">
+                                    <span asp-validation-for="Schedule" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label for="problemImage" class="form-label">Add Image for Problem:</label>
-                                    <input type="file" class="form-control-file" id="problemImage" accept="image/*" multiple>
+                                    <input aspfor type="file" class="form-control-file" id="problemImage" accept="image/*" multiple>
                                 </div>
                             </div>
 

@@ -93,6 +93,7 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult ProprieterAppointments()
         {
             return View();
@@ -185,9 +186,16 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult ProprieterAddAppointment()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ProprieterAddAppointment()
+        {
+
         }
 
         public IActionResult ProprieterViewAppointments()
