@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+      <style>
+        table th, table td {
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
@@ -91,9 +96,11 @@
                                 <td>@technician.FullName</td>
                                 <td>@technician.ContactNum</td>
                                 <td>@technician.Address</td>
-                                <td class="border @(@technician.Status.Equals("Active") ? "border-success" : "border-warning")">
-                                    @technician.Status
-                                </td>
+                                        <td>
+            <button class="btn @(@technician.Status.Equals("Active") ? "btn-success" : "btn-warning")">
+                                        @technician.Status
+            </button>
+        </td>
                                 <td><button class="btn btn-warning">Edit</button></td>
                             </tr>
                         }
