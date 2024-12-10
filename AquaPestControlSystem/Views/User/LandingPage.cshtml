@@ -1,12 +1,10 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Aquarius Pest Control Services - Landing Page</title>
+    <meta name="description" content="Aquarius Pest Control Services - Your trusted partner in pest control solutions. Get a free inspection today!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -14,7 +12,7 @@
 </head>
 <body class="bg-gray-50">
 
-    <header class="bg-blue-200 p-3 text-center">
+    <header class="bg-blue-200 p-3 text-center sticky top-0 z-10">
         <div class="mx-5 flex items-center justify-between">
             <img src="../aqua logo.png" alt="Logo" class="w-20 h-20">
             <nav>
@@ -29,79 +27,79 @@
         </div>
     </header>
 
-    <section class="py-16 relative bg-cover bg-center text-center" style="background-image: url('../image1.png');">
+    <section id="home" class="py-16 relative bg-cover bg-center text-center" style="background-image: url('../image1.png');">
         <h1 class="text-white mx-auto text-4xl font-bold outline">
             AQUARIUS PEST <br>
             CONTROL SERVICES
         </h1>
-        <p class="text-white mt-auto text-xs outline">"Protecting your home, safeguarding your peace of mind.</p>
-        <button class="bg-orange-500 text-white py-2 px-4 rounded-full shadow">Contact Us</button>
+        <p class="text-white mt-auto text-xs outline">"Protecting your home, safeguarding your peace of mind."</p>
+        <button class="bg-orange-500 text-white py-2 px-4 rounded-full shadow hover:bg-orange-600 transition duration-300">Contact Us</button>
     </section>
 
     <section class="booking-section p-5">
-        <div class="booking-content">
-            <img src="../image 2.png" alt="Pest Control Icon" class="booking-icon">
+        <div class="booking-content text-center">
+            <img src="../image 2.png" alt="Pest Control Icon" class="booking-icon mx-auto mb-4">
             <p>"Don't let pests invade your home! Book a free inspection now and take the first step towards a pest-free environment. Fast, effective, and guaranteed solutions await. Book now!"</p>
-            <a href="#" class="book-button">Book a Schedule →</a>
+            <a href="#contact" class="book-button bg-orange-500 text-white py-2 px-4 rounded-full shadow mt-4 hover:bg-orange-600 transition duration-300">Book a Schedule →</a>
         </div>
     </section>
 
-    <section id="services" class="py-16 bg-white text-center">
-        <h2 class="mb-8 text-3xl font-bold">SERVICES WE OFFER</h2>
-        <div class="grid">
-            <div class="service-card">
-                <img src=".png" alt="Icon" class="h-8 w-8 mb-2 mx-auto">
-                <h3 class="mt-2 text-left text-xl font-semibold">Termite Treatment</h3>
-                <p class="text-gray-700 text-left">Protect your home from termite damage with our reliable treatments.</p>
-                <div class="mt-2 text-left">
-                    <a href="#" class="text-blue-500 inline-block">See More</a>
-                </div>
-                <img src="../image 3.png" alt="Termite Treatment" class="h-40 mt-4 w-full rounded object-cover">
+<section id="services" class="py-16 bg-white text-center">
+    <h2 class="mb-8 text-3xl font-bold">SERVICES WE OFFER</h2>
+    <div class="grid md:grid-cols-3 gap-6 px-6">
+        <div class="service-card bg-gray-100 p-5 rounded-lg shadow-lg">
+            <img src="../termite.png" alt="Termite Treatment" class="h-8 w-8 mb-2 mx-auto">
+            <h3 class="text-xl font-semibold">Termite Treatment</h3>
+            <p class="text-gray-700">Protect your home from termite damage with our reliable treatments.</p>
+            <div class="mt-2">
+                <a href="#" class="text-blue-500 inline-block">See More</a>
             </div>
-
-            <div class="service-card">
-                <img src=".png" alt="Icon" class="h-8 w-8 mb-2 mx-auto">
-                <h3 class="mt-2 text-left text-xl font-semibold">Cockroach Control</h3>
-                <p class="text-gray-700 text-left">Keep Cockroachs out with our specialized control solutions.</p>
-                <div class="mt-2 text-left">
-                    <a href="#" class="text-blue-500 inline-block">See More</a>
-                </div>
-                <img src="../rat.png" alt="Cockroach Control" class="h-40 mt-4 w-full rounded object-cover">
-            </div>
-
-            <div class="service-card">
-                <img src=".png" alt="Icon" class="h-8 w-8 mb-2 mx-auto">
-                <h3 class="mt-2 text-left text-xl font-semibold">Ant Control</h3>
-                <p class="text-gray-700 text-left">Safeguard your property from ants with professional services.</p>
-                <div class="mt-2 text-left">
-                    <a href="#" class="text-blue-500 inline-block">See More</a>
-                </div>
-                <img src="../ant.png" alt="Ant Control" class="h-40 mt-4 w-full rounded object-cover">
-            </div>
+            <img src="../image 3.png" alt="Termite Treatment" class="h-40 mt-4 w-full rounded object-cover">
         </div>
 
-        <div class="grid">
-            <div class="service-card">
-                <img src="i.png" alt="Icon" class="h-8 w-8 mb-2 mx-auto">
-                <h3 class="mt-2 text-left text-xl font-semibold">Cockroach Treatment</h3>
-                <p class="text-gray-700 text-left">Eliminate bed bugs effectively with our targeted treatments.</p>
-                <div class="mt-2 text-left">
-                    <a href="#" class="text-blue-500 inline-block">See More</a>
-                </div>
-                <img src="../roach.png" alt="Cockroach Treatment" class="h-40 mt-4 w-full rounded object-cover">
+        <div class="service-card bg-gray-100 p-5 rounded-lg shadow-lg">
+            <img src="../cockroach.png" alt="Cockroach Control" class="h-8 w-8 mb-2 mx-auto">
+            <h3 class="text-xl font-semibold">Cockroach Control</h3>
+            <p class="text-gray-700">Keep Cockroaches out with our specialized control solutions.</p>
+            <div class="mt-2">
+                <a href="#" class="text-blue-500 inline-block">See More</a>
             </div>
-
-            <div class="service-card">
-                <img src="i.png" alt="Icon" class="h-8 w-8 mb-2 mx-auto">
-                <h3 class="mt-2 text-left text-xl font-semibold">Mosquito Control</h3>
-                <p class="text-gray-700 text-left">Prevent mosquito infestations with our comprehensive services.</p>
-                <div class="mt-2 text-left">
-                    <a href="#" class="text-blue-500 inline-block">See More</a>
-                </div>
-                <img src="../mosq.png" alt="Mosquito Control" class="h-40 mt-4 w-full rounded object-cover">
-            </div>
+            <img src="../rat.png" alt="Cockroach Control" class="h-40 mt-4 w-full rounded object-cover">
         </div>
-    </section>
+
+        <div class="service-card bg-gray-100 p-5 rounded-lg shadow-lg">
+            <img src="../ant.png" alt="Ant Control" class="h-8 w-8 mb-2 mx-auto">
+            <h3 class="text-xl font-semibold">Ant Control</h3>
+            <p class="text-gray-700">Safeguard your property from ants with professional services.</p>
+            <div class="mt-2">
+                <a href="#" class="text-blue-500 inline-block">See More</a>
+            </div>
+            <img src="../ant.png" alt="Ant Control" class="h-40 mt-4 w-full rounded object-cover">
+        </div>
+
+        <!-- Additional Service Cards -->
+        <div class="service-card bg-gray-100 p-5 rounded-lg shadow-lg">
+            <img src="../roach.png" alt="Cockroach Treatment" class="h-8 w-8 mb-2 mx-auto">
+            <h3 class="text-xl font-semibold">Cockroach Treatment</h3>
+            <p class="text-gray-700">Eliminate bed bugs effectively with our targeted treatments.</p>
+            <div class="mt-2">
+                <a href="#" class="text-blue-500 inline-block">See More</a>
+            </div>
+            <img src="../roach.png" alt="Cockroach Treatment" class="h-40 mt-4 w-full rounded object-cover">
+        </div>
+
+        <div class="service-card bg-gray-100 p-5 rounded-lg shadow-lg">
+            <img src="../mosq.png" alt="Mosquito Control" class="h-8 w-8 mb-2 mx-auto">
+            <h3 class="text-xl font-semibold">Mosquito Control</h3>
+            <p class="text-gray-700">Prevent mosquito infestations with our comprehensive services.</p>
+            <div class="mt-2">
+                <a href="#" class="text-blue-500 inline-block">See More</a>
+            </div>
+            <img src="../mosq.png" alt="Mosquito Control" class="h-40 mt-4 w-full rounded object-cover">
+        </div>
+    </div>
+</section>
+
 
     <section class="py-16 bg-blue-100 text-center">
         <h2 class="mb-8 text-3xl font-bold">WHY CHOOSE US?</h2>
@@ -150,24 +148,24 @@
         </div>
     </section>
 
-    <section id="Testimonials" class="py-16 bg-blue-200 text-center">
-        <h2 class="mb-8 text-3xl font-bold">WHAT OUR CLIENTS SAY</h2>
-        <div class="testimonial">
-            <p class="text-gray-600 italic">“They were prompt, professional, and I haven't seen a bug since!”</p>
-            <p class="font-semibold">- Maria L.</p>
-        </div>
-        <div class="testimonial">
-            <p class="text-gray-600 italic">“The best pest control service I have ever used!”</p>
-            <p class="font-semibold">- John D.</p>
-        </div>
-        <div class="testimonial">
-            <p class="text-gray-600 italic">“Highly recommend for their quality and customer service.”</p>
-            <p class="font-semibold">- Emily R.</p>
-        </div>
-    </section>
+  <section id="Testimonials" class="py-16 bg-blue-200 text-center">
+    <h2 class="mb-8 text-3xl font-bold">WHAT OUR CLIENTS SAY</h2>
+    <div class="testimonial mb-4">
+        <p class="text-gray-600 italic">“They were prompt, professional, and I haven't seen a bug since!”</p>
+        <p class="font-semibold">- Maria L.</p>
+    </div>
+    <div class="testimonial mb-4">
+        <p class="text-gray-600 italic">“The best pest control service I have ever used!”</p>
+        <p class="font-semibold">- John D.</p>
+    </div>
+    <div class="testimonial mb-4">
+        <p class="text-gray-600 italic">“Highly recommend for their quality and customer service.”</p>
+        <p class="font-semibold">- Emily R.</p>
+    </div>
+</section>
 
-    <footer class="bg-gray-900 text-white py-4 text-center">
-        <p>© 2024 AQUARIUS PEST CONTROL SERVICES. All rights reserved.</p>
-    </footer>
+<footer class="bg-gray-900 text-white py-4 text-center">
+    <p>© 2024 AQUARIUS PEST CONTROL SERVICES. All rights reserved.</p>
+</footer>
 </body>
 </html>
