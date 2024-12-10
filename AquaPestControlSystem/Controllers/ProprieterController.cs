@@ -192,33 +192,7 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult ProprieterAddAppointment(AppointmentViewModel appointmentData)
-        {
-            string stringFileName = UploadFile(appointmentData);
-            if (ModelState.IsValid)
-            {
-                var appointment = new Appointment
-                {
-                    FirstName = appointmentData.FirstName,
-                    LastName = appointmentData.LastName,
-                    MiddleName = appointmentData.MiddleName,
-                    ContactNum = appointmentData.ContactNum,
-                    Address = appointmentData.Address,
-                    PestProblem = appointmentData.PestProblem,
-                    Schedule = appointmentData.Schedule,
-                    ProblemImage = stringFileName
-                };
-
-                _context.Appointments.Add(appointment);
-                _context.SaveChanges();
-                return RedirectToAction("ProprieterViewAppointment");
-            }
-            else
-            {
-                return View();
-            }
-        }
+   
 
         public IActionResult ProprieterViewAppointments()
         {
