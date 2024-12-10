@@ -26,7 +26,7 @@ namespace AquaPestControlSystem.Models.DBEntities
 
         public DateTime Schedule {  get; set; }
 
-        public byte[] ProblemImage { get; set; }
+        public string ImageFileName { get; set; }
 
         public string CustomerId { get; set; }
 

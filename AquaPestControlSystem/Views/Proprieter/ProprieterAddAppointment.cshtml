@@ -126,7 +126,8 @@
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label for="problemImage" class="form-label">Add Image for Problem:</label>
-                                    <input aspfor type="file" class="form-control-file" id="problemImage" accept="image/*" multiple>
+                                    <input asp-for="ProblemImage" type="file" class="form-control-file" id="problemImage" accept="image/*" multiple>
+                                    <span asp-validation-for="ProblemImage" class="text-danger"></span>
                                 </div>
                             </div>
 
