@@ -35,9 +35,7 @@ namespace AquaPestControlSystem.Models
         [DisplayName("Schedule")]
         public DateTime Schedule { get; set; }
 
-        [DisplayName("Problem Image")]
-        public IFormFile ImageFile { get; set; }
-
+        
         public string CustomerId { get; set; }
 
         [DisplayName("Full Name")]

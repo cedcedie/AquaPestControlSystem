@@ -71,7 +71,7 @@
                 <div class="col-md-8">
                     <div class="table-container form-container">
                         <h2 class="text-center mb-4">Appointment Details</h2>
-                        <form action="ProprieterAddAppointment" id="appointmentForm">
+                        <form asp-action="ProprieterAddAppointment" method="post" id="appointmentForm" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email:</label>
@@ -126,8 +126,8 @@
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label for="problemImage" class="form-label">Add Image for Problem:</label>
-                                    <input asp-for="ProblemImage" type="file" class="form-control-file" id="problemImage" accept="image/*" multiple>
-                                    <span asp-validation-for="ProblemImage" class="text-danger"></span>
+                                    <input asp-for="ImageFile"  type="file" class="form-control-file" id="problemImage" accept="image/*" multiple>
+                                    <span asp-validation-for="ImageFile" class="text-danger"></span>
                                 </div>
                             </div>
 

@@ -9,10 +9,12 @@ namespace AquaPestControlSystem.Controllers
     public class ProprieterController : Controller
     {
         private readonly ProprieterCustomerDBContext _context;
+        private readonly IWebHostEnvironment environment;
 
-        public ProprieterController(ProprieterCustomerDBContext context)
+        public ProprieterController(ProprieterCustomerDBContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            this.environment = environment;
         }
 
         [HttpGet]
@@ -195,9 +197,22 @@ namespace AquaPestControlSystem.Controllers
         [HttpPost]
         public IActionResult ProprieterAddAppointment(AppointmentViewModel appointmentData)
         {
-            string stringFileName = UploadFile(appointmentData);
+            if (appointmentData.ImageFile == null)
+            {
+                ModelState.AddModelError("Image", "This image file is required");
+            }
+
             if (ModelState.IsValid)
             {
+                string newFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                newFileName += Path.GetExtension(appointmentData.ImageFile!.FileName);
+
+                string imageFullPath = environment.WebRootPath + "/Problem/" + newFileName;
+                using (var stream = System.IO.File.Create(imageFullPath))
+                {
+                    appointmentData.ImageFile.CopyTo(stream);
+                }
+
                 var appointment = new Appointment
                 {
                     FirstName = appointmentData.FirstName,
@@ -206,13 +221,13 @@ namespace AquaPestControlSystem.Controllers
                     ContactNum = appointmentData.ContactNum,
                     Address = appointmentData.Address,
                     PestProblem = appointmentData.PestProblem,
-                    Schedule = appointmentData.Schedule,
-                    ProblemImage = stringFileName
+                    Schedule = appointmentData.Schedule.Date,
+                    ImageFileName = newFileName
                 };
 
                 _context.Appointments.Add(appointment);
                 _context.SaveChanges();
-                return RedirectToAction("ProprieterViewAppointment");
+                return RedirectToAction("ProprieterViewAppointments");
             }
             else
             {
