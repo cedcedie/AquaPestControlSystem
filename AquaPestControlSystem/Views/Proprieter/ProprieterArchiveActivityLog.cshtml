@@ -3,6 +3,11 @@
 *@
 @{
 }
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +24,6 @@
         }
     </style>
 </head>
-<style>
-
-</style>
 <body style="background-color: #8ecae6;">
 
     <div class="sidebar" id="menu">
@@ -47,14 +49,10 @@
             <span class="icon">📊</span>
             <span>Reports</span>
         </a>
-   
+
         <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
             <span class="icon">📑</span>
             <span>Activity Log</span>
-        </a>
-        <a href="@Url.Action("ProprieterArchives", "Proprieter")" class="menu-item" data-menu="Archives">
-            <span class="icon">📑</span>
-            <span>Archives</span>
         </a>
 
         <div class="profile">
@@ -70,8 +68,11 @@
     <div class="content">
         <div class="table-container">
             <div class="header">
-                <h2>ARCHIVES</h2>
+                <h2>ACTIVITY LOG</h2>
                 <div class="search-container">
+                     <a href="@Url.Action("ProprieterArchiveActivityLog", "Proprieter")">
+                        <button class="add-tech-btn">Archive</button>
+                    </a>
                     <input type="text" id="searchInput" placeholder="Search..." />
                     <div class="sort-container" id="sortButton">
                         <span>Sort by Newest</span>
@@ -79,43 +80,33 @@
                     </div>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Archive ID</th>
-                        <th>Date/Time Archived</th>
-                        <th>Role</th>
-                        <th>View</th>
-
-                        </tbody>
-                </thead>
-                <tbody id="Archives">
-                    <tr>
-                        <td>001</td>
-                        <td>October 29, 2024 10:17:19 </td>
-                        <td>Technician</td>
-                        <td>
-                            <a href="@Url.Action("ProprieterViewArchives", "Proprieter")">
-                                <button class="view-btn">View</button>
-                            </a>
-                        </td>
-                      
-   
-
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>November 3, 2024 10:17:19 </td>
-                        <td>Proprietor</td>
-                        <td>
-                            <a href="@Url.Action("ProprieterViewArchives", "Proprieter")">
-                                <button class="view-btn">View</button>
-                            </a>
-                        </td>
-
-
-                    </tr>
-            </table>
+          <table>
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Name</th>
+            <th>Timestamp</th>
+            <th>Action</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="Archives">
+        <tr>
+            <td>Technician</td>
+            <td>John Doe</td>
+            <td>October 29, 2024 10:17:19</td>
+            <td>Archived</td>
+            <td>Successful</td>
+        </tr>
+        <tr>
+            <td>Proprietor</td>
+            <td>Jane Smith</td>
+            <td>November 3, 2024 10:17:19</td>
+            <td>Archived</td>
+            <td>Pending</td>
+        </tr>
+    </tbody>
+</table>
             <div class="pagination">
                 <span id="paginationInfo">Showing 1 to 8 of 8 entries</span>
                 <div>

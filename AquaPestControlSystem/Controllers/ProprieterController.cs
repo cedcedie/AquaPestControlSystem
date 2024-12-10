@@ -205,5 +205,30 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
+
+        public IActionResult ProprieterArchiveActivityLog()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterArchiveAppointment()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterArchiveCustomers()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterArchiveReports()
+        {
+            return View();
+        }
+
+        public IActionResult ProprieterArchiveTechnicians()
+        {
+            return View();
+        }
     }
 }

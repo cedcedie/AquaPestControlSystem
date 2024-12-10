@@ -11,29 +11,27 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
     <style>
-        /* Custom styles for better spacing */
         .table th, .table td {
-            padding: 15px; /* Increase padding for more space */
+            padding: 15px; 
         }
         .table th {
-            background-color: #f8f9fa; /* Light background for headers */
+            background-color: #f8f9fa;
             font-weight: bold;
         }
         .card {
-            margin-top: 30px; /* Add space between card and content */
+            margin-top: 30px;
         }
 
-        /* Remove underline from the view buttons */
         .view-btn {
             cursor: pointer;
             color: #007bff;
-            text-decoration: none; /* Remove underline */
+            text-decoration: none;
         }
         .view-btn:hover {
-            text-decoration: none; /* Ensure no underline on hover */
+            text-decoration: none; 
         }
 
-        /* Modal Styles */
+   
         .modal-content img {
             width: 100%;
             max-height: 500px;
@@ -42,7 +40,6 @@
     </style>
 </head>
 <body style="background-color: #8ecae6;">
-    <!-- Sidebar -->
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
         <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
@@ -84,19 +81,18 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+
     <div class="content">
         <div class="table-container">
-            <!-- Customer Information Table -->
+   
             <div class="header mb-4">
-                <h2>Customer Details</h2>
+                <h2>APPOINTMENT DETAILS</h2>
             </div>
 
-            <!-- Customer Information Table -->
             <table class="table table-bordered">
                 <tbody>
                     <tr>
-                        <th>Customer ID</th>
+                        <th>Appointment ID</th>
                         <td>12345</td>
                     </tr>
                     <tr>
@@ -146,7 +142,7 @@
         </div>
     </div>
 
-    <!-- Modal for Multiple Inspection Images -->
+
     <div class="modal fade" id="inspectionModal" tabindex="-1" aria-labelledby="inspectionModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -155,7 +151,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Bootstrap Carousel for Multiple Images -->
+      
                     <div id="inspectionCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
