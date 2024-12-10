@@ -1,20 +1,28 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
 @{
 }
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aquarius Pest Control Services - Activity Log</title>
+    <title>Aquarius Pest Control Services - Upcoming Schedules</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-       <link rel="stylesheet" href="~/css/output.css" media="all" />
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
-      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
-       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+     <style>
+        table th, table td {
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
 </head>
+
 <body style="background-color: #8ecae6;">
+
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
 
@@ -26,12 +34,11 @@
             <span class="icon">📋</span>
             <span>Reports</span>
         </a>
-            <a href="@Url.Action("TechnicianRequest", "Technician")" class="menu-item" data-menu="Request">
+        <a href="@Url.Action("TechnicianRequest", "Technician")" class="menu-item" data-menu="Request">
             <span class="icon">📋</span>
             <span>Request</span>
         </a>
-
-            <a href="@Url.Action("TechnicianSchedule", "Technician")" class="menu-item" data-menu="Schedule">
+        <a href="@Url.Action("TechnicianSchedule", "Technician")" class="menu-item" data-menu="Schedule">
             <span class="icon">📋</span>
             <span>Schedule</span>
         </a>
@@ -46,11 +53,64 @@
         </div>
     </div>
 
-
     <div class="content">
         <div class="table-container">
+            <div class="header">
+                <h2>SCHEDULES</h2>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search..." />
+                    <div class="sort-container" id="sortButton">
+                        <span>Sort by Due Date</span>
+                        <span class="sort-arrow">▼</span>
+                    </div>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Schedule ID</th>
+                        <th>Date/Time Scheduled</th>
+                        <th>Service Type</th>
+                        <th>Due Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="DueSchedules">
+                    <tr>
+                        <td>001</td>
+                        <td>October 29, 2024 10:17:19</td>
+                        <td>Pest Control</td>
+                        <td>November 5, 2024</td>
+                        <td><button class="view-details">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>November 3, 2024 10:17:19</td>
+                        <td>Rodent Treatment</td>
+                        <td>November 10, 2024</td>
+                        <td><button class="view-details">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>November 1, 2024 14:00:00</td>
+                        <td>Termite Control</td>
+                        <td>November 7, 2024</td>
+                        <td><button class="view-details">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
+        <div class="pagination">
+            <span id="paginationInfo">Showing 1 to 3 of 3 entries</span>
+            <div>
+                <button id="prevButton">Previous</button>
+                <button id="nextButton">Next</button>
+            </div>
         </div>
     </div>
+
     <script src="~/js/proSidebar.js"></script>
+
 </body>
+</html>
