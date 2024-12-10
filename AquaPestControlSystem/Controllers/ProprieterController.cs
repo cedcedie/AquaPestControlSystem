@@ -9,10 +9,12 @@ namespace AquaPestControlSystem.Controllers
     public class ProprieterController : Controller
     {
         private readonly ProprieterCustomerDBContext _context;
+        private readonly IWebHostEnvironment environment;
 
-        public ProprieterController(ProprieterCustomerDBContext context)
+        public ProprieterController(ProprieterCustomerDBContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            this.environment = environment;
         }
 
         [HttpGet]
@@ -191,8 +193,6 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
-
-   
 
         public IActionResult ProprieterViewAppointments()
         {

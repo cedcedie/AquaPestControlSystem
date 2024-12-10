@@ -71,7 +71,7 @@
                 <div class="col-md-8">
                     <div class="table-container form-container">
                         <h2 class="text-center mb-4">Appointment Details</h2>
-                        <form action="ProprieterAddAppointment" id="appointmentForm">
+                        <form asp-action="ProprieterAddAppointment" method="post" id="appointmentForm" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email:</label>
@@ -126,7 +126,7 @@
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <label for="problemImage" class="form-label">Add Image for Problem:</label>
-                                </div>
+             </div>
                             </div>
 
                             <div class="text-center mt-4">
