@@ -76,60 +76,65 @@
                 <div class="col-md-8">
                     <div class="form-container p-4 shadow-sm bg-white rounded">
                         <h2 class="text-center mb-4">Appointment Details</h2>
-                        <form action="ProprieterAddAppointment" id="appointmentForm">
-                            <div class="form-row">
-                                <div class="col-md-6 mb-3">
+                        <form asp-action="ProprieterAddAppointment" asp-controller="Proprieter" method="post" id="appointmentForm" enctype="multipart/form-data">
+                            <div class="row g-3">
+                                <div class="col-md-6">
                                     <label for="email" class="form-label">Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address" required>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="col-md-4 mb-3">
+                            <div class="row g-3">
+                                <div class="col-md-4">
                                     <label for="firstName" class="form-label">First Name:</label>
-                                    <input asp-for="FirstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name" required>
+                                    <input asp-for="FirstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4">
                                     <label for="middleName" class="form-label">Middle Name:</label>
-                                    <input asp-for="MiddleName" type="text" class="form-control" id="middleName" placeholder="Enter Middle Name" required>
+                                    <input asp-for="MiddleName" type="text" class="form-control" id="middleName" placeholder="Enter Middle Name">
+                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-4 mb-3">
+                                <div class="col-md-4">
                                     <label for="lastName" class="form-label">Last Name:</label>
-                                    <input asp-for="LastName" type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required>
+                                    <input asp-for="LastName" type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="col-md-6 mb-3">
+                            <div class="row g-3">
+                                <div class="col-md-6">
                                     <label for="contactNumber" class="form-label">Contact Number:</label>
-                                    <input asp-for="ContactNum" type="tel" class="form-control" id="contactNumber" placeholder="Enter Contact Number" required>
+                                    <input asp-for="ContactNum" type="tel" class="form-control" id="contactNumber" placeholder="Enter Contact Number">
+                                    <span asp-validation-for="ContactNum" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6">
                                     <label for="address" class="form-label">Address:</label>
-                                    <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Enter Address" required>
+                                    <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Enter Address">
+                                    <span asp-validation-for="Address" class="text-danger"></span>
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="col-md-6 mb-3">
+                            <div class="row g-3">
+                                <div class="col-md-6">
                                     <label for="pestProblem" class="form-label">Pest Problem:</label>
-                                    <input asp-for="PestProblem" type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem" required>
+                                    <input asp-for="PestProblem" type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem">
+                                    <span asp-validation-for="PestProblem" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <div class="col-md-6">
                                     <label for="schedule" class="form-label">Schedule:</label>
-                                    <input asp-for="Schedule" type="datetime-local" class="form-control" id="schedule" required>
+                                    <input asp-for="Schedule" type="datetime-local" class="form-control" id="schedule">
+                                    <span asp-validation-for="Schedule" class="text-danger"></span>
                                 </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-md-12 mb-3">
-                                    <label for="problemImage" class="form-label">Add Image for Problem:</label>
-                                    <input type="file" class="form-control-file" id="problemImage">
+                                <div class="col-md-6">
+                                    <label for="image" class="form-label">Add Image for Problem:</label>
+                                    <input asp-for="ImageFile" type="file" class="form-control" id="image" />
+                                    <span asp-validation-for="ImageFile" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="text-center mt-4">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>

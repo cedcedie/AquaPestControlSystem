@@ -96,7 +96,21 @@ namespace AquaPestControlSystem.Controllers
         [HttpGet]
         public IActionResult ProprieterAppointments()
         {
-            return View();
+            var appointments = _context.Appointments.ToList();
+            var appointmentViewModel = appointments.Select(a => new AppointmentViewModel
+            {
+                FirstName = a.FirstName,
+                LastName = a.LastName,
+                MiddleName = a.MiddleName,
+                ContactNum = a.ContactNum,
+                Address = a.Address,
+                Email = a.Email,
+                PestProblem = a.PestProblem,
+                Schedule = a.Schedule,
+                ImageUrl = Url.Content(a.ImageFileName)
+            }).ToList();
+
+            return View(appointmentViewModel);
         }
 
         [HttpGet]
@@ -192,11 +206,76 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
-   
+        [HttpPost]
+        public IActionResult ProprieterAddAppointment(AppointmentViewModel appointmentData)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (appointmentData.ImageFile == null || appointmentData.ImageFile.Length == 0)
+                    {
+                        ModelState.AddModelError("ImageFile", "Please select an image file.");
+                        return View(appointmentData);
+                    }
 
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(appointmentData.ImageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        appointmentData.ImageFile.CopyTo(stream);
+                    }
+
+                    var appointment = new Appointment()
+                    {
+                        FirstName = appointmentData.FirstName,
+                        LastName = appointmentData.LastName,
+                        MiddleName = appointmentData.MiddleName,
+                        ContactNum = appointmentData.ContactNum,
+                        Address = appointmentData.Address,
+                        PestProblem = appointmentData.PestProblem,
+                        Schedule = appointmentData.Schedule,
+                        ImageFileName = "~/images/" + fileName
+                    };
+
+                    _context.Appointments.Add(appointment);
+                    _context.SaveChanges();
+
+                    return RedirectToAction("ProprieterAppointments");
+                }
+                else
+                {
+                    ModelState.AddModelError("CustomError", "This is a custom validation error message.");
+
+                    // Return the view with validation errors
+                    return View(appointmentData);
+                }
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
+        }
+
+        [HttpGet]
         public IActionResult ProprieterViewAppointments()
         {
-            return View();
+            var appointments = _context.Appointments.ToList();
+            var appointmentViewModel = appointments.Select(a => new AppointmentViewModel
+            {
+                FirstName = a.FirstName,
+                LastName = a.LastName,
+                MiddleName = a.MiddleName,
+                ContactNum = a.ContactNum,
+                Address = a.Address,
+                Email = a.Email,
+                PestProblem = a.PestProblem,
+                Schedule = a.Schedule,
+                ImageUrl = Url.Content(a.ImageFileName)
+            }).ToList();
+
+            return View(appointmentViewModel);
         }
 
 

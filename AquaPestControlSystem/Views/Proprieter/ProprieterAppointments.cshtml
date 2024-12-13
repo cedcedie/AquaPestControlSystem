@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@{
-}
+﻿@model List<AquaPestControlSystem.Models.AppointmentViewModel>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,22 +190,29 @@
                     </tr>
                 </thead>
                 <tbody id="Appointments">
-                    <tr>
-                        <td>johndoe@example.com</td>
-                        <td>09/10/2024</td>
-                        <td>Termite Infestation</td>
-                        <td>123 Oak Street, Cityville</td>
-                        <td><button class="status-btns to-be-assigned">To be Assigned</button></td>
-                        <td>
-                            <div class="tools-container">
-                                <button class="assign-btn" onclick="assignTechnician('johndoe@example.com')">Assign</button>
-                                <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
-                                    <button class="view-btns">View</button>
-                                </a>
-                                <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
+@if (Model != null && Model.Any())
+{
+    @foreach (var appointment in Model)
+    {
+        <tr>
+            <td>@appointment.FullName</td>
+            <td>@appointment.Schedule</td>
+            <td>@appointment.PestProblem</td>
+            <td>@appointment.Address</td>
+            <td><button class="status-btns to-be-assigned">To be Assigned</button></td>
+            <td>
+                <div class="tools-container">
+                    <button class="assign-btn" onclick="assignTechnician('@appointment.FullName')">Assign</button>
+                    <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
+                        <button class="view-btns">View</button>
+                    </a>
+                    <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                </div>
+            </td>
+        </tr>
+    }
+}
+
                 </tbody>
             </table>
             <div class="pagination">

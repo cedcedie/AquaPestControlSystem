@@ -38,6 +38,8 @@ namespace AquaPestControlSystem.Models
         [DisplayName("Problem Image")]
         public IFormFile ImageFile { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public string CustomerId { get; set; }
 
         [DisplayName("Full Name")]
