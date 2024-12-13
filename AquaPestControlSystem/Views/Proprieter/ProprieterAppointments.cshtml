@@ -1,9 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-@{
-}
+﻿@model List<AquaPestControlSystem.Models.AppointmentViewModel>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -222,24 +217,30 @@
                     </tr>
                 </thead>
                 <tbody id="Appointments">
-                    <tr>
-                        <td>johndoe@example.com</td>
-                        <td>09/10/2024</td>
-                        <td>Termite Infestation</td>
-                        <td>123 Oak Street, Cityville</td>
-                        <td><button class="status-btn to-be-assigned">To be Assigned</button></td>
-                        <td>
-                            <button class="assign-btn" onclick="assignTechnician('johndoe@example.com')">Assign</button>
-                        </td>
-                        <td>
-                            <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
-                                <button class="view-btn">View</button>
-                            </a>
-                        </td>
-                        <td>
-                            <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                        </td>
-                    </tr>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var appointment in Model)
+                        {
+                            <tr>
+                                <td>@appointment.FullName</td>
+                                <td>@appointment.Schedule</td>
+                                <td>@appointment.PestProblem</td>
+                                <td>@appointment.Address</td>
+                                <td><button class="status-btn to-be-assigned">To be Assigned</button></td>
+                                <td>
+                                    <button class="assign-btn" onclick="assignTechnician('johndoe@example.com')">Assign</button>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("ProprieterViewAppointments", "Proprieter")">
+                                        <button class="view-btn">View</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <button class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    }
                 </tbody>
             </table>
              <div class="pagination">
