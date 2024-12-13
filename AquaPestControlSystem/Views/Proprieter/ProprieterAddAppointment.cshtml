@@ -1,102 +1,12 @@
 ﻿@model AquaPestControlSystem.Models.AppointmentViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aquarius Pest Control Services - Appointment Details</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/output.css" media="all" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .table-container {
-            min-height: 820px;
-        }
-        .form-label {
-            font-weight: bold;
-        }
-        .form-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .content {
-            padding: 30px;
-        }
-        .form-control-file {
-            padding: 6px 12px;
-        }
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1050;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            overflow: auto;
-            padding-top: 100px;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 30px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .close {
-            color: #aaa;
-            font-size: 30px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-            color: #fff;
-        }
-
-        .logout-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-        .cancel-btn {
-            background-color: #607d8b;
-            color: white;
-        }
-    </style>
 </head>
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
@@ -126,102 +36,95 @@
             <span>Activity Log</span>
         </a>
 
-      <div class="profile">
-     <a href="@Url.Action("ProprieterProfile", "Proprieter")" style="display: flex; align-items: center; text-decoration: none;">
-        <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
-        <div class="profile-info" style="margin-right: 10px;">
-            <span>Rodrigo</span>
-            <span class="role">Proprietor</span>
+        <div class="profile">
+            <a href="@Url.Action("ProprieterProfile", "Proprieter")" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
+                <div class="profile-info" style="margin-right: 10px;">
+                    <span>Rodrigo</span>
+                    <span class="role">Proprietor</span>
+                </div>
+            </a>
+            <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
+                <span class="logout-arrow">⮞</span>
+            </a>
         </div>
-    </a>
-    <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
-        <span class="logout-arrow">⮞</span>
-    </a>
-</div> </div> </div>
+    </div>
 
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to log out?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-    <div class="content">
+    <div class="content margin-bottom: 300px">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="table-container form-container">
+                    <div class="form-container p-4 shadow-sm bg-white rounded">
                         <h2 class="text-center mb-4">Appointment Details</h2>
                         <form action="ProprieterAddAppointment" id="appointmentForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
                                     <label for="email" class="form-label">Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address" required>
                                 </div>
                             </div>
 
-                            <div class="row g-3">
-                                <div class="col-md-4">
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
                                     <label for="firstName" class="form-label">First Name:</label>
-                                    <input asp-for="FirstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name">
-                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
+                                    <input asp-for="FirstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name" required>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-3">
                                     <label for="middleName" class="form-label">Middle Name:</label>
-                                    <input asp-for="MiddleName" type="text" class="form-control" id="middleName" placeholder="Enter Middle Name">
-                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
+                                    <input asp-for="MiddleName" type="text" class="form-control" id="middleName" placeholder="Enter Middle Name" required>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 mb-3">
                                     <label for="lastName" class="form-label">Last Name:</label>
-                                    <input asp-for="LastName" type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
-                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                    <input asp-for="LastName" type="text" class="form-control" id="lastName" placeholder="Enter Last Name" required>
                                 </div>
                             </div>
 
-                            <div class="row g-3">
-                                <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
                                     <label for="contactNumber" class="form-label">Contact Number:</label>
-                                    <input asp-for="ContactNum" type="tel" class="form-control" id="contactNumber" placeholder="Enter Contact Number">
-                                    <span asp-validation-for="ContactNum" class="text-danger"></span>
+                                    <input asp-for="ContactNum" type="tel" class="form-control" id="contactNumber" placeholder="Enter Contact Number" required>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <label for="address" class="form-label">Address:</label>
-                                    <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Enter Address">
-                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                    <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Enter Address" required>
                                 </div>
                             </div>
 
-                            <div class="row g-3">
-                                <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
                                     <label for="pestProblem" class="form-label">Pest Problem:</label>
-                                    <input asp-for="PestProblem" type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem">
-                                    <span asp-validation-for="PestProblem" class="text-danger"></span>
+                                    <input asp-for="PestProblem" type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem" required>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <label for="schedule" class="form-label">Schedule:</label>
-                                    <input asp-for="Schedule" type="datetime-local" class="form-control" id="schedule">
-                                    <span asp-validation-for="Schedule" class="text-danger"></span>
+                                    <input asp-for="Schedule" type="datetime-local" class="form-control" id="schedule" required>
                                 </div>
                             </div>
 
-                            <div class="row g-3">
-                                <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
                                     <label for="problemImage" class="form-label">Add Image for Problem:</label>
+                                    <input type="file" class="form-control-file" id="problemImage">
                                 </div>
                             </div>
 
@@ -231,20 +134,6 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Logout Modal -->
-    <div id="logoutModal" class="modal" aria-labelledby="logoutModalTitle" role="dialog">
-        <div class="modal-content">
-            <span class="close" id="closeModal" aria-label="Close Modal">&times;</span>
-            <h2 id="logoutModalTitle">Are you sure you want to log out?</h2>
-            <div class="button-container">
-                <a href="@Url.Action("UserLogin", "User")" class="logout-btn">
-                    <button onclick="logout()">Yes</button>
-                </a>
-                <button class="cancel-btn" onclick="closeModal()">No</button>
             </div>
         </div>
     </div>
