@@ -19,25 +19,67 @@ menuItems.forEach(item => {
         localStorage.setItem('activeMenu', this.getAttribute('data-menu'));
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const rowsPerPage = 10;
+    const tableBody = document.getElementById("Archives");
+    const paginationInfo = document.getElementById("paginationInfo");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    const noNextPageAlert = document.getElementById("noNextPageAlert");
 
-const searchInput = document.getElementById('searchInput');
-const activityLog = document.getElementById('activityLog');
-const rows = Array.from(activityLog.getElementsByTagName('tr'));
-let currentPage = 0;
-const entriesPerPage = 8;
+    let currentPage = 1;
+    let totalRows = tableBody.rows.length;
+    let totalPages = Math.ceil(totalRows / rowsPerPage);
 
-function updatePagination() {
-    const start = currentPage * entriesPerPage;
-    const end = start + entriesPerPage;
-    const paginatedRows = rows.slice(start, end);
-    activityLog.innerHTML = '';
-    paginatedRows.forEach(row => activityLog.appendChild(row));
+    function updateTable() {
+        // Hide all rows
+        for (let i = 0; i < totalRows; i++) {
+            tableBody.rows[i].style.display = "none";
+        }
 
-    document.getElementById('paginationInfo').innerText = `Showing ${start + 1} to ${Math.min(end, rows.length)} of ${rows.length} entries`;
-}
+        // Show rows for the current page
+        const startIndex = (currentPage - 1) * rowsPerPage;
+        const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+        for (let i = startIndex; i < endIndex; i++) {
+            tableBody.rows[i].style.display = "";
+        }
 
-updatePagination();
+        // Update pagination info
+        paginationInfo.textContent = `Showing ${startIndex + 1} to ${endIndex} of ${totalRows} entries`;
 
+        // Reset alert visibility
+        noNextPageAlert.style.display = "none";
+    }
+
+    function nextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            updateTable();
+        } else if (totalRows <= rowsPerPage) {
+            // Show the alert if the rows are less than 10
+            noNextPageAlert.style.display = "inline-block";
+
+            // Hide the alert after 3 seconds
+            setTimeout(() => {
+                noNextPageAlert.style.display = "none";
+            }, 3000);
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            updateTable();
+        }
+    }
+
+    // Event listeners
+    nextButton.addEventListener("click", nextPage);
+    prevButton.addEventListener("click", prevPage);
+
+    // Initial render
+    updateTable();
+});
 searchInput.addEventListener('keyup', function() {
     const filter = searchInput.value.toLowerCase();
     const filteredRows = rows.filter(row => {

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
-      <style>
+    <style>
         table th, table td {
             border-bottom: 1px solid #ccc;
         }
@@ -21,31 +21,30 @@
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
-
-     <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
-    <span class="icon">📋</span>
-    <span>Dashboard</span>
-</a>
-<a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
-    <span class="icon">📅</span>
-    <span>Appointments</span>
-</a>
-<a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
-    <span class="icon">👥</span>
-    <span>Customers</span>
-</a>
-<a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
-    <span class="icon">🔧</span>
-    <span>Technicians</span>
-</a>
-<a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
-    <span class="icon">📊</span>
-    <span>Reports</span>
-</a>
-<a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
-    <span class="icon">📑</span>
-    <span>Activity Log</span>
-</a>
+        <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
+            <span class="icon">📅</span>
+            <span>Appointments</span>
+        </a>
+        <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
+            <span class="icon">👥</span>
+            <span>Customers</span>
+        </a>
+        <a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
+            <span class="icon">🔧</span>
+            <span>Technicians</span>
+        </a>
+        <a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
+            <span class="icon">📊</span>
+            <span>Reports</span>
+        </a>
+        <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
+            <span class="icon">📑</span>
+            <span>Activity Log</span>
+        </a>
 
         <div class="profile">
             <img src="https://via.placeholder.com/40" alt="Profile Picture">
@@ -65,7 +64,7 @@
                     <a href="@Url.Action("ProprieterAddCustomer", "Proprieter")">
                         <button class="add-tech-btn">Add Customer</button>
                     </a>
-                     <a href="@Url.Action("ProprieterArchiveCustomers", "Proprieter")">
+                    <a href="@Url.Action("ProprieterArchiveCustomers", "Proprieter")">
                         <button class="add-tech-btn">Archive</button>
                     </a>
                     <input type="text" id="searchInput" placeholder="Search..." />
@@ -85,35 +84,54 @@
                         <th>Address</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="customerTableBody">
                     @if (Model != null && Model.Any())
                     {
                         @foreach (var customer in Model)
                         {
-                            <tr>
-                                <td>@customer.FullName</td>
-                                <td>@customer.ContactNum</td>
-                                <td>@customer.Email</td>
-                                <td>@customer.Address</td>
-                            </tr>
+                                    <tr>
+                                        <td>@customer.FullName</td>
+                                        <td>@customer.ContactNum</td>
+                                        <td>@customer.Email</td>
+                                        <td>@customer.Address</td>
+                                    </tr>
                         }
                     }
                     else
                     {
-                        <tr>
-                            <td colspan="4">
-                                <div>No Customers Available.</div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div>No Customers Available.</div>
+                                </td>
+                            </tr>
                     }
                 </tbody>
             </table>
 
-            <div class="pagination">
-                <span id="paginationInfo">Showing 1 to 3 of 3 entries</span>
+         <div class="pagination">
+                <span id="paginationInfo">Showing 0 to 0 of 0 entries</span>
                 <div>
-                    <button id="prevButton">Previous</button>
-                    <button id="nextButton">Next</button>
+                    <button id="prevButton" onclick="prevPage()">Previous</button>
+                    <button id="nextButton" onclick="nextPage()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="noMorePagesModal" tabindex="-1" role="dialog" aria-labelledby="noMorePagesModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="noMorePagesModalLabel">No More Pages</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    There are no more pages available.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -121,50 +139,70 @@
 
     <script src="~/js/proSidebar.js"></script>
     <script>
-        document.getElementById('searchInput').addEventListener('keyup', function () {
-            let filter = this.value.toLowerCase();
-            let rows = document.querySelectorAll('table tbody tr');
+      document.addEventListener("DOMContentLoaded", () => {
+            const rowsPerPage = 12;
+            const tableBody = document.getElementById("Archives");
+            const paginationInfo = document.getElementById("paginationInfo");
+            const prevButton = document.getElementById("prevButton");
+            const nextButton = document.getElementById("nextButton");
+            const searchInput = document.getElementById("searchInput");
+            const noMorePagesModal = new bootstrap.Modal(document.getElementById('noMorePagesModal'));
 
-            rows.forEach(row => {
-                let cells = row.querySelectorAll('td');
-                let textContent = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
-                row.style.display = textContent.includes(filter) ? '' : 'none';
-            });
-        });
-        let currentPage = 1;
-        const rowsPerPage = 3;
+            let currentPage = 1;
+            let filteredRows = Array.from(tableBody.rows); 
+            let totalRows = filteredRows.length;
+            let totalPages = Math.ceil(totalRows / rowsPerPage);
 
-        const updatePagination = () => {
-            const rows = document.querySelectorAll('table tbody tr');
-            const totalRows = rows.length;
-            const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-            document.getElementById('paginationInfo').textContent = `Showing ${currentPage * rowsPerPage - 2} to ${Math.min(currentPage * rowsPerPage, totalRows)} of ${totalRows} entries`;
-            document.getElementById('prevButton').disabled = currentPage === 1;
-            document.getElementById('nextButton').disabled = currentPage === totalPages;
-
-            rows.forEach((row, index) => {
-                row.style.display = (index >= (currentPage - 1) * rowsPerPage && index < currentPage * rowsPerPage) ? '' : 'none';
-            });
-        };
-
-        document.getElementById('prevButton').addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                updatePagination();
+            function filterTable() {
+                const searchTerm = searchInput.value.toLowerCase();
+                filteredRows = Array.from(tableBody.rows).filter(row => {
+                    const rowText = row.textContent.toLowerCase();
+                    return rowText.includes(searchTerm);
+                });
+                totalRows = filteredRows.length;
+                totalPages = Math.ceil(totalRows / rowsPerPage);
+                currentPage = 1; 
+                updateTable();
             }
-        });
 
-        document.getElementById('nextButton').addEventListener('click', () => {
-            const totalRows = document.querySelectorAll('table tbody tr').length;
-            const totalPages = Math.ceil(totalRows / rowsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                updatePagination();
+            function updateTable() {
+
+                Array.from(tableBody.rows).forEach(row => row.style.display = "none");
+
+                const startIndex = (currentPage - 1) * rowsPerPage;
+                const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+
+
+                for (let i = startIndex; i < endIndex; i++) {
+                    filteredRows[i].style.display = "";
+                }
+
+                paginationInfo.textContent = `Showing ${startIndex + 1} to ${endIndex} of ${totalRows} entries`;
             }
-        });
 
-        updatePagination(); 
+            function nextPage() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updateTable();
+                } else {
+
+                    noMorePagesModal.show();
+                }
+            }
+
+            function prevPage() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updateTable();
+                }
+            }
+
+            nextButton.addEventListener("click", nextPage);
+            prevButton.addEventListener("click", prevPage);
+            searchInput.addEventListener("input", filterTable);
+
+            updateTable();
+        });
     </script>
 </body>
 </html>
