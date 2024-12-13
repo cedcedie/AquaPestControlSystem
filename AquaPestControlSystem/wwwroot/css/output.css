@@ -1729,14 +1729,3 @@ table-container .status-btn {
 .table-container .status-btn.not-assigned {
   background-color: #dc2f02; 
 }
-.table-container .view-btn {
-  background-color: #339af0; /* Blue for View button */
-  color: rgb(0, 0, 0); /* Black text */
-  padding: 4px 8px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}.table-container .view-btn:hover {
-  background-color: #8ecae6; 
-}
