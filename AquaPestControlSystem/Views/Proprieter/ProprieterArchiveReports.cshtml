@@ -1,14 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<head>
+﻿<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aquarius Pest Control Services - Activity Log</title>
@@ -18,9 +8,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
-      <style>
+    <style>
         table th, table td {
             border-bottom: 1px solid #ccc;
+        }
+         .restore-btn {
+            background-color: #5c9ded; 
+            color: white;
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
@@ -28,72 +27,71 @@
 
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
-<a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
-    <span class="icon">📋</span>
-    <span>Dashboard</span>
-</a>
-<a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
-    <span class="icon">📅</span>
-    <span>Appointments</span>
-</a>
-<a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
-    <span class="icon">👥</span>
-    <span>Customers</span>
-</a>
-<a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
-    <span class="icon">🔧</span>
-    <span>Technicians</span>
-</a>
-<a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
-    <span class="icon">📊</span>
-    <span>Reports</span>
-</a>
-<a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
-    <span class="icon">📑</span>
-    <span>Activity Log</span>
-</a>
+        <a href="@Url.Action("ProprieterDashboard", "Proprieter")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="@Url.Action("ProprieterAppointments", "Proprieter")" class="menu-item" data-menu="appointments">
+            <span class="icon">📅</span>
+            <span>Appointments</span>
+        </a>
+        <a href="@Url.Action("ProprieterCustomer", "Proprieter")" class="menu-item" data-menu="Customers">
+            <span class="icon">👥</span>
+            <span>Customers</span>
+        </a>
+        <a href="@Url.Action("ProprieterTechnicians", "Proprieter")" class="menu-item" data-menu="Technicians">
+            <span class="icon">🔧</span>
+            <span>Technicians</span>
+        </a>
+        <a href="@Url.Action("ProprieterReports", "Proprieter")" class="menu-item" data-menu="Reports">
+            <span class="icon">📊</span>
+            <span>Reports</span>
+        </a>
+        <a href="@Url.Action("ProprieterActivityLog", "Proprieter")" class="menu-item" data-menu="Activity-log">
+            <span class="icon">📑</span>
+            <span>Activity Log</span>
+        </a>
 
-<div class="profile">
-        <a href="@Url.Action("ProprieterProfile", "Proprieter")" style="display: flex; align-items: center; text-decoration: none;">
-        <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
-        <div class="profile-info" style="margin-right: 10px;">
-            <span>Rodrigo</span>
-            <span class="role">Proprietor</span>
+        <div class="profile">
+            <a href="@Url.Action("ProprieterProfile", "Proprieter")" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
+                <div class="profile-info" style="margin-right: 10px;">
+                    <span>Rodrigo</span>
+                    <span class="role">Proprietor</span>
+                </div>
+            </a>
+            <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
+                <span class="logout-arrow">⮞</span>
+            </a>
         </div>
-    </a>
-    <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
-        <span class="logout-arrow">⮞</span>
-    </a>
-</div> </div> </div>
+    </div>
 
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to log out?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
 
     <div class="content">
         <div class="table-container">
             <div class="header">
-                <h2>ACTIVITY LOG</h2>
+                <h2>ARCHIVES</h2>
                 <div class="search-container">
-                     <a href="@Url.Action("ProprieterArchiveActivityLog", "Proprieter")">
+                    <a href="@Url.Action("ProprieterArchiveActivityLog", "Proprieter")">
                         <button class="add-tech-btn">Archive</button>
                     </a>
                     <input type="text" id="searchInput" placeholder="Search..." />
@@ -103,33 +101,32 @@
                     </div>
                 </div>
             </div>
-          <table>
-    <thead>
-        <tr>
-            <th>Role</th>
-            <th>Name</th>
-            <th>Timestamp</th>
-            <th>Action</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody id="Archives">
-        <tr>
-            <td>Technician</td>
-            <td>John Doe</td>
-            <td>October 29, 2024 10:17:19</td>
-            <td>Archived</td>
-            <td>Successful</td>
-        </tr>
-        <tr>
-            <td>Proprietor</td>
-            <td>Jane Smith</td>
-            <td>November 3, 2024 10:17:19</td>
-            <td>Archived</td>
-            <td>Pending</td>
-        </tr>
-    </tbody>
-</table>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Archive ID</th>
+                        <th>Date Archived</th>
+        
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="Archives">
+                    <tr>
+                        <td>1</td>
+                        <td>October 29, 2024 10:17:19</td>
+       
+                        <td><button class="restore-btn">Restore</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>November 3, 2024 10:17:19</td>
+             
+                        <td><button class="restore-btn">Restore</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div class="pagination">
                 <span id="paginationInfo">Showing 1 to 8 of 8 entries</span>
                 <div>
@@ -141,9 +138,8 @@
     </div>
 
     <script src="~/js/proSidebar.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 </html>

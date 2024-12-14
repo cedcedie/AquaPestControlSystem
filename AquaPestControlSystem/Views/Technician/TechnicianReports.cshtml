@@ -79,16 +79,16 @@
 
         /* Modal Styles */
         .modal-content {
-            background-color: #f0f8ff; /* Light blue background */
+            background-color: #f0f8ff; 
         }
 
         .modal-header {
-            background-color: #007bff; /* Blue background for header */
-            color: white; /* White text color */
+            background-color: #007bff; 
+            color: white; 
         }
 
         .modal-footer button {
-            background-color: #28a745; /* Green background for buttons */
+            background-color: #28a745; 
         }
     </style>
 </head>
@@ -112,12 +112,36 @@
             <span>Schedule</span>
         </a>
         <div class="profile">
-            <img src="https://via.placeholder.com/40" alt="Profile Picture">
-            <div class="profile-info">
-                <span>Rodrigo</span>
-                <span class="role">Proprietor</span>
+            <a href="@Url.Action("TechnicianProfile", "Technician")" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
+                <div class="profile-info" style="margin-right: 10px;">
+                    <span>Rodrigo</span>
+                    <span class="role">Proprietor</span>
+                </div>
+            </a>
+            <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
+                <span class="logout-arrow">⮞</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+                </div>
             </div>
-            <span class="logout-arrow">⮞</span>
         </div>
     </div>
 
@@ -127,37 +151,62 @@
                 <div class="col-md-6">
                     <div class="table-container">
                         <h2 class="text-center mb-4">INSPECTION SUMMARY</h2>
-                        <form id="inspectionForm">
+                        <form id="inspectionForm" runat="server">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="dateInspection" class="form-label">Date Inspection:</label>
-                                    <input type="date" class="form-control" id="dateInspection">
+                                    <input type="date" class="form-control" id="dateInspection" required />
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="dateInspection" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Date is required" 
+                                        runat="server" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inspectorName" class="form-label">Inspector Name:</label>
-                                    <input type="text" class="form-control" id="inspectorName">
+                                    <input type="text" class="form-control" id="inspectorName" required />
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="inspectorName" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Inspector name is required" 
+                                        runat="server" />
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="clientName" class="form-label">Client Name:</label>
-                                    <input type="text" class="form-control" id="clientName">
+                                    <input type="text" class="form-control" id="clientName" required />
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="clientName" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Client name is required" 
+                                        runat="server" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="address" class="form-label">Address:</label>
-                                    <input type="text" class="form-control" id="address">
+                                    <input type="text" class="form-control" id="address" required />
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="address" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Address is required" 
+                                        runat="server" />
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="contactInfo" class="form-label">Contact Information:</label>
-                                    <input type="text" class="form-control" id="contactInfo">
+                                    <input type="text" class="form-control" id="contactInfo" required />
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="contactInfo" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Contact information is required" 
+                                        runat="server" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inspectionType" class="form-label">Inspection Type:</label>
-                                    <select class="form-select" id="inspectionType">
+                                    <select class="form-select" id="inspectionType" required>
                                         <option selected disabled>Select</option>
                                         <option>Initial</option>
                                         <option>Routine</option>
@@ -165,13 +214,18 @@
                                         <option>Food Safety Compliance</option>
                                         <option>Others</option>
                                     </select>
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="inspectionType" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Inspection type is required" 
+                                        runat="server" />
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="area" class="form-label">Areas:</label>
-                                    <select class="form-select" id="area">
+                                    <select class="form-select" id="area" required>
                                         <option selected disabled>Select</option>
                                         <option>Kitchen</option>
                                         <option>Storage Areas</option>
@@ -179,10 +233,15 @@
                                         <option>Basement/Attics</option>
                                         <option>Outdoor Areas</option>
                                     </select>
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="area" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Area is required" 
+                                        runat="server" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="treatmentType" class="form-label">Treatment Type:</label>
-                                    <select class="form-select" id="treatmentType">
+                                    <select class="form-select" id="treatmentType" required>
                                         <option selected disabled>Select</option>
                                         <option>Chemical Spray</option>
                                         <option>Bait Stations</option>
@@ -190,13 +249,18 @@
                                         <option>Exclusion Methods</option>
                                         <option>Other</option>
                                     </select>
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="treatmentType" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Treatment type is required" 
+                                        runat="server" />
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="pestType" class="form-label">Pest Type:</label>
-                                    <select class="form-select" id="pestType">
+                                    <select class="form-select" id="pestType" required>
                                         <option selected disabled>Select</option>
                                         <option>Rodent</option>
                                         <option>Termites</option>
@@ -204,22 +268,38 @@
                                         <option>Ants</option>
                                         <option>Cockroach</option>
                                     </select>
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="pestType" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Pest type is required" 
+                                        runat="server" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="salesInput" class="form-label">Sales Input:</label>
-                                    <input type="text" class="form-control" id="salesInput" placeholder="Enter sales details">
+                                    <input type="text" class="form-control" id="salesInput" placeholder="Enter sales details" required />
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="salesInput" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Sales input is required" 
+                                        runat="server" />
                                 </div>
                             </div>
 
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="problemImage" class="form-label">Add Image for Problem:</label>
-                                    <input type="file" class="form-control" id="problemImage" accept="image/*" multiple>
+                                    <input type="file" class="form-control" id="problemImage" accept="image/*" multiple required />
+                                    <asp:RequiredFieldValidator 
+                                        ControlToValidate="problemImage" 
+                                        ForeColor="Red" 
+                                        ErrorMessage="Problem image is required" 
+                                        runat="server" />
                                 </div>
                             </div>
 
                             <div class="text-center mt-4">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submitModal">Submit</button>
+                            
+                                <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -296,7 +376,6 @@
         function submitForm() {
             $('#submitModal').modal('hide');
             alert('Inspection Submitted');
-            // You can perform form submission here if needed
         }
     </script>
 </body>

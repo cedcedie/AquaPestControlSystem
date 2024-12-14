@@ -1,21 +1,66 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
 }
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aquarius Pest Control Services - Activity Log</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="~/css/output.css" media="all" />
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
-      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
-       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+    <style>
+      
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; 
+        }
 
+        .container {
+            height: 90%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            height: 100%; 
+            flex: 1; 
+        }
+
+        .col-md-3 {
+            height: auto; 
+            flex: 0 0 25%; 
+        }
+
+  
+        .col-md {
+            height: 100%; 
+            overflow-y: auto; 
+        }
+
+       
+        .table-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        table {
+            flex: 1; 
+            overflow-y: auto;
+            display: block;
+        }
+
+        .card {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
-<body style="background-color: #8ecae6;">
+<body style="background-color: #8ecae6; font-family: 'Poppins', sans-serif;">
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
 
@@ -31,117 +76,297 @@
             <span class="icon">📋</span>
             <span>Request</span>
         </a>
-
         <a href="@Url.Action("TechnicianSchedule", "Technician")" class="menu-item" data-menu="Schedule">
             <span class="icon">📋</span>
             <span>Schedule</span>
         </a>
 
         <div class="profile">
-            <img src="https://via.placeholder.com/40" alt="Profile Picture">
-            <div class="profile-info">
-                <span>Rodrigo</span>
-                <span class="role">Proprietor</span>
-            </div>
-            <span class="logout-arrow">⮞</span>
+            <a href="@Url.Action("TechnicianProfile", "Technician")" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
+                <div class="profile-info" style="margin-right: 10px;">
+                    <span>Rodrigo</span>
+                    <span class="role">Proprietor</span>
+                </div>
+            </a>
+            <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
+                <span class="logout-arrow">⮞</span>
+            </a>
         </div>
     </div>
 
-    <div class="container">
-    <div class="row ">
-        <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-cherry">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0">New Orders</h5>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0">
-                                3,243
-                            </h2>
-                        </div>
-                        <div class="col-4 text-right">
-                            <span>12.5% <i class="fa fa-arrow-up"></i></span>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 rounded-lg p-4 mb-6" style="background: #fff; border-left: 4px solid #219ebc;">
+                    <div class="d-flex align-items-center">
+                        <div class="h3 text-primary mr-3">📊</div>
+                        <div>
+                            <h5>Total Reports</h5>
+                            <div class="h4">124</div>
                         </div>
                     </div>
-                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                </div>
+
+                <div class="card shadow-sm border-0 rounded-lg p-4 mb-6" style="background: #fff; border-left: 4px solid #00aaff;">
+                    <div class="d-flex align-items-center">
+                        <div class="h3 text-success mr-3">📅</div>
+                        <div>
+                            <h5>Appointment Requests</h5>
+                            <div class="h4">43</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0 rounded-lg p-4 mb-12" style="background: #fff; border-left: 4px solid #f5a623;">
+                    <div class="d-flex align-items-center">
+                        <div class="h3 text-warning mr-3">🗓️</div>
+                        <div>
+                            <h5>Upcoming Schedule</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <span>Jan 14, 2024 - Client A</span>
+                                    <span class="badge badge-info float-right">Pending</span>
+                                </li>
+                                <li class="mb-2">
+                                    <span>Jan 15, 2024 - Client B</span>
+                                    <span class="badge badge-warning float-right">Confirmed</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-blue-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0">Customers</h5>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0">
-                                15.07k
-                            </h2>
-                        </div>
-                        <div class="col-4 text-right">
-                            <span>9.23% <i class="fa fa-arrow-up"></i></span>
-                        </div>
-                    </div>
-                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-green-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0">Ticket Resolved</h5>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0">
-                                578
-                            </h2>
-                        </div>
-                        <div class="col-4 text-right">
-                            <span>10% <i class="fa fa-arrow-up"></i></span>
-                        </div>
-                    </div>
-                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-orange-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
-                    <div class="mb-4">
-                        <h5 class="card-title mb-0">Revenue Today</h5>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0">
-                                $11.61k
-                            </h2>
-                        </div>
-                        <div class="col-4 text-right">
-                            <span>2.5% <i class="fa fa-arrow-up"></i></span>
-                        </div>
-                    </div>
-                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+
+       
+            <div class="col-md">
+                <div class="card shadow-sm border-0 rounded-lg p-4">
+                    <h5>Previous Activity Records</h5>
+                    <div class="table-container">
+                        <table class="table table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Activity</th>
+                                    <th scope="col">Technician</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jan 12, 2024</td>
+                                    <td>Pest Inspection</td>
+                                    <td>Rodrigo</td>
+                                    <td>Completed</td>
+                                </tr>
+                                <tr>
+                                    <td>Jan 11, 2024</td>
+                                    <td>Client Consultation</td>
+                                    <td>Alice</td>
+                                    <td>Completed</td>
+                                </tr>
+                                <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>
+
+                                  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>  <tr>
+                                    <td>Jan 10, 2024</td>
+                                    <td>Pest Treatment</td>
+                                    <td>John</td>
+                                    <td>Pending</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="~/js/proSidebar.js"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>]</html>

@@ -14,14 +14,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
 
     <style>
-        /* General table styles */
         table th, table td {
             border-bottom: 1px solid #ccc;
             padding: 12px;
             text-align: left;
         }
 
-        /* Modal styles */
+   
         .modal {
             display: none;
             position: fixed;
@@ -47,7 +46,7 @@
             animation: fadeIn 0.3s ease;
         }
 
-        /* Modal close button */
+   
         .close {
             color: #aaa;
             font-size: 30px;
@@ -64,14 +63,14 @@
             text-decoration: none;
         }
 
-        /* Buttons Container */
+ 
         .button-container {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
         }
 
-        /* Button Styles */
+    
         button {
             padding: 10px 20px;
             border-radius: 5px;
@@ -96,14 +95,13 @@
             color: white;
         }
 
-        /* Table Header Styles */
         th {
             background-color: transparent;
             color: black;
             font-weight: bold;
         }
 
-        /* Pagination Button Styles */
+    
         .pagination button {
             padding: 5px 15px;
             margin: 0 5px;
@@ -236,8 +234,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Logout Modal -->
     <div id="logoutModal" class="modal" aria-labelledby="logoutModalTitle" role="dialog">
         <div class="modal-content">
             <span class="close" id="closeModal" aria-label="Close Modal">&times;</span>
@@ -258,25 +254,24 @@
 
 
     <script>
-        // When the logout icon is clicked
+ 
         document.querySelector('.logout-arrow').addEventListener('click', function () {
             document.getElementById("logoutModal").style.display = "block";
         });
 
-        // Close the modal when the user clicks the close button
+   
         document.getElementById("closeModal").addEventListener('click', closeModal);
 
-        // Close the modal when the user clicks "No"
+
         function closeModal() {
             document.getElementById("logoutModal").style.display = "none";
         }
 
-        // Logout function
+   
         function logout() {
             window.location.href = "@Url.Action("UserLogin", "User")";
         }
 
-        // Close modal when the user clicks outside the modal
         window.onclick = function (event) {
             if (event.target == document.getElementById("logoutModal")) {
                 closeModal();

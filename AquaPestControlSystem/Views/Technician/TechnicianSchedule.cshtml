@@ -44,14 +44,37 @@
         </a>
 
         <div class="profile">
-            <img src="https://via.placeholder.com/40" alt="Profile Picture">
-            <div class="profile-info">
-                <span>Rodrigo</span>
-                <span class="role">Proprietor</span>
+    <a href="@Url.Action("TechnicianProfile", "Technician")" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
+        <div class="profile-info" style="margin-right: 10px;">
+            <span>Rodrigo</span>
+            <span class="role">Proprietor</span>
+        </div>
+    </a>
+    <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
+        <span class="logout-arrow">⮞</span>
+    </a>
+</div> </div> </div>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <span class="logout-arrow">⮞</span>
+            <div class="modal-body">
+                Are you sure you want to log out?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+            </div>
         </div>
     </div>
+</div>
 
     <div class="content">
         <div class="table-container">

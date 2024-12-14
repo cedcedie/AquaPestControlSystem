@@ -129,7 +129,6 @@
         </section>
     </div>
 
-    <!-- Logout Modal -->
     <div id="logoutModal" class="modal" aria-labelledby="logoutModalTitle" role="dialog">
         <div class="modal-content">
             <span class="close" id="closeModal" aria-label="Close Modal">&times;</span>
@@ -150,20 +149,20 @@
 
 
     <script>
-        // When the logout icon is clicked
+     
         document.querySelector('.logout-arrow').addEventListener('click', function(event) {
             event.preventDefault();
-            document.getElementById('logoutModal').style.display = 'block'; // Show the modal
+            document.getElementById('logoutModal').style.display = 'block';
         });
 
-        // Close the modal when 'X' is clicked
+      
         document.getElementById('closeModal').addEventListener('click', function() {
-            document.getElementById('logoutModal').style.display = 'none'; // Hide the modal
+            document.getElementById('logoutModal').style.display = 'none'; 
         });
 
-        // Function to close the modal when 'No' is clicked
+ 
         function closeModal() {
-            document.getElementById('logoutModal').style.display = 'none'; // Hide the modal
+            document.getElementById('logoutModal').style.display = 'none'; 
         }
     </script>
 
