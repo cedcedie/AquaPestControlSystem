@@ -30,5 +30,25 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
+        public IActionResult UserServiceAnts()
+        {
+            return View();
+        }
+        public IActionResult UserServiceRoach()
+        {
+            return View();
+        }
+        public IActionResult UserServiceRodent()
+        {
+            return View();
+        }
+        public IActionResult UserServiceMosq()
+        {
+            return View();
+        }
+        public IActionResult UserServiceTermites()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,134 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Landing Page</title>
+    <meta name="description" content="Aquarius Pest Control Services - Your trusted partner in pest control solutions. Get a free inspection today!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/LandingPage.css" media="all" /> 
+      <style>
+     html {
+            scroll-behavior: smooth;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; 
+           background-color: #219ebc;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header-content img {
+            width: 50px;
+            height: 50px;
+        }
+
+        body {
+            margin-top: 80px; 
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+
+        .home-description {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<header>
+    <div class="header-content">
+        <img src="/images/logo.jpg" alt="Logo" class="w-20 h-20">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+        </nav>
+        <a href="@Url.Action("UserLogin", "User")" class="bg-orange-500 text-white py-2 px-4 rounded-full">Make an Appointment</a>
+    </div>
+</header>
+
+ <section id="home" class="py-16 relative bg-cover bg-center text-center" style="background-image: url('/images/image 5.png'); margin-top: -20px;  height: 300px;">
+         </section>
+
+<section class="home-description">
+    <h2 class="text-4xl font-semibold mb-4">Mosquito Treatment</h2>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Mosquitoes are not only annoying, but they are also carriers of diseases such as malaria, dengue, Zika virus, and West Nile virus. These pests thrive in humid environments, especially in areas with standing water like puddles, ponds, or even containers left outside. A mosquito infestation can quickly spread, and their bites can cause itching, swelling, and allergic reactions in some individuals.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Mosquitoes breed rapidly, with each female capable of laying hundreds of eggs in a short time. This rapid reproduction makes it challenging to control infestations without proper treatment. In addition to the health risks, mosquitoes can disrupt outdoor activities, making it difficult to enjoy your yard, garden, or other outdoor spaces. Effective mosquito treatment focuses on both eliminating adult mosquitoes and targeting their breeding sites.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        A professional mosquito treatment service includes a thorough inspection of your property to identify potential breeding grounds, such as stagnant water in gutters, bird baths, and flower pots. The treatment often involves spraying larvicides to prevent the eggs from hatching and insecticides to eliminate adult mosquitoes. These treatments are applied strategically to ensure that your entire property is protected.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Regular treatments are essential for long-term mosquito control. Mosquitoes can be relentless, and new infestations may arise if preventive measures are not consistently applied. Homeowners can also take steps to reduce mosquito populations by eliminating standing water around their property, using mosquito repellents, and installing screens on windows and doors. With proper treatment and prevention, you can enjoy a mosquito-free environment and reduce the risk of mosquito-borne diseases.
+    </p>
+</section>
+
+
+<footer>
+    <p>© 2024 AQUARIUS PEST CONTROL SERVICES. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

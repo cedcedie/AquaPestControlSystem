@@ -1,0 +1,134 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Landing Page</title>
+    <meta name="description" content="Aquarius Pest Control Services - Your trusted partner in pest control solutions. Get a free inspection today!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/LandingPage.css" media="all" /> 
+      <style>
+     html {
+            scroll-behavior: smooth;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; 
+           background-color: #219ebc;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header-content img {
+            width: 50px;
+            height: 50px;
+        }
+
+        body {
+            margin-top: 80px; 
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+
+        .home-description {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<header>
+    <div class="header-content">
+        <img src="/images/logo.jpg" alt="Logo" class="w-20 h-20">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+        </nav>
+        <a href="@Url.Action("UserLogin", "User")" class="bg-orange-500 text-white py-2 px-4 rounded-full">Make an Appointment</a>
+    </div>
+</header>
+
+ <section id="home" class="py-16 relative bg-cover bg-center text-center" style="background-image: url('/images/image (1).png'); margin-top: -20px;  height: 300px;">
+         </section>
+
+<section class="home-description">
+    <h2 class="text-4xl font-semibold mb-4">Cockroach Treatment</h2>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Cockroaches are one of the most common and resilient pests that can infest homes and businesses. These nocturnal insects are typically found in warm, dark environments such as kitchens, bathrooms, and basements. Cockroaches are not only a nuisance, but they can also pose serious health risks. They carry bacteria, viruses, and other pathogens on their bodies, which can contaminate food, surfaces, and even cause allergic reactions in sensitive individuals.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        In addition to being a health risk, cockroaches can also cause damage to property. They may chew on a variety of materials, including paper, fabric, and even electrical wires. As they hide in cracks and crevices, their presence can be difficult to detect until the infestation has become more severe. The longer cockroaches are left unchecked, the more likely they are to spread throughout the property, making them harder to eliminate.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Professional cockroach treatment services are the most effective way to eliminate these pests and prevent future infestations. A comprehensive treatment typically begins with a detailed inspection to identify cockroach hiding spots and entry points. Experts use a combination of methods, such as baiting, traps, and chemical treatments, to eradicate the infestation and ensure that it doesn’t return.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        To keep your home or business cockroach-free, regular pest control maintenance is crucial. Scheduling periodic inspections and treatments helps catch potential issues early, before they become larger infestations. Homeowners can also take proactive steps by sealing cracks and crevices, cleaning up food crumbs and spills promptly, and storing food in airtight containers. These preventive measures, along with professional treatment, can help maintain a clean, safe, and cockroach-free environment.
+    </p>
+</section>
+
+
+<footer>
+    <p>© 2024 AQUARIUS PEST CONTROL SERVICES. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

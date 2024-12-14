@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Landing Page</title>
+    <meta name="description" content="Aquarius Pest Control Services - Your trusted partner in pest control solutions. Get a free inspection today!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/LandingPage.css" media="all" /> 
+      <style>
+     html {
+            scroll-behavior: smooth;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; 
+           background-color: #219ebc;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header-content img {
+            width: 50px;
+            height: 50px;
+        }
+
+        body {
+            margin-top: 80px; 
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+
+        .home-description {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<header>
+    <div class="header-content">
+        <img src="/images/logo.jpg" alt="Logo" class="w-20 h-20">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+        </nav>
+        <a href="@Url.Action("UserLogin", "User")" class="bg-orange-500 text-white py-2 px-4 rounded-full">Make an Appointment</a>
+    </div>
+</header>
+
+ <section id="home" class="py-16 relative bg-cover bg-center text-center" style="background-image: url('/images/image 25.png'); margin-top: -20px;  height: 300px;">
+         </section>
+
+<section class="home-description">
+    <h2 class="text-4xl font-semibold mb-4">Ant Treatment</h2>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Ants, though small, can be a significant nuisance when they invade homes and businesses. These persistent creatures are often seen in kitchens, pantries, and other places where food and water are available. They can cause structural damage by nesting in walls, under floors, and in other hidden spaces. Some species of ants, like carpenter ants, tunnel through wood and can cause extensive damage to wooden structures. Meanwhile, fire ants can pose a threat to human health, as their painful stings can lead to allergic reactions, especially in those who are sensitive to venom.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Beyond their ability to cause damage, ants can also carry bacteria and other harmful microorganisms, which may contaminate food, surfaces, and even water supplies. This makes them a serious concern, especially in kitchens and food storage areas. Different types of ants, including carpenter ants, fire ants, and sugar ants, have different behaviors and nesting preferences, but all of them can create problems if not managed properly. Some ants travel in large colonies, making it difficult to eliminate an infestation without professional help.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        A professional ant treatment service ensures that the infestation is eradicated at its source, targeting not only the visible ants but also the hidden nests where the problem starts. The treatment typically includes a thorough inspection of the premises to identify potential entry points and nesting areas. By using a combination of baiting, chemical treatments, and preventative measures, a pest control expert can eliminate the colony and prevent it from returning.
+    </p>
+    <p class="text-lg leading-relaxed text-gray-700 mb-4">
+        Regular maintenance is key in keeping your space safe and ant-free. Scheduling routine inspections and treatments can help catch potential infestations early, before they escalate into larger problems. Additionally, homeowners can take preventative measures, such as sealing cracks and crevices around windows and doors, keeping food stored in airtight containers, and keeping trash bins covered. When an infestation is caught early, the problem can be managed quickly and efficiently, ensuring that your home or business remains safe, clean, and free from these invasive pests.
+    </p>
+</section>
+
+<footer>
+    <p>© 2024 AQUARIUS PEST CONTROL SERVICES. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
