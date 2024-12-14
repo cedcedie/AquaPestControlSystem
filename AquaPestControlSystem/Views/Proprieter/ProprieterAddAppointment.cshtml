@@ -1,5 +1,4 @@
 ﻿@model AquaPestControlSystem.Models.AppointmentViewModel
-
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
     <meta charset="UTF-8"> 
@@ -123,10 +122,15 @@
                                     <input asp-for="PestProblem" type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem">
                                     <span asp-validation-for="PestProblem" class="text-danger"></span>
                                 </div>
-                                <div class="col-md-6">
+                                @* <div class="col-md-6">
                                     <label for="image" class="form-label">Add Image for Problem:</label>
                                     <input asp-for="ImageFile" type="file" class="form-control" id="image" />
                                     <span asp-validation-for="ImageFile" class="text-danger"></span>
+                                </div> *@
+                                <div class="col-md-6">
+                                    <label for="schedule" class="form-label">Schedule Appointment:</label>
+                                    <input asp-for="Schedule" type="date" class="form-control" />
+                                    <span asp-validation-for="Schedule" classs="text-danger"></span>
                                 </div>
                             </div>
 

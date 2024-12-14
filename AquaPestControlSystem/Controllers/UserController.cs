@@ -1,5 +1,6 @@
 ﻿using AquaPestControlSystem.DAL;
 using AquaPestControlSystem.Models;
+using AquaPestControlSystem.Models.DBEntities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -60,9 +61,45 @@ namespace AquaPestControlSystem.Controllers
             return View();
 
         }
+        [HttpGet]
         public IActionResult UserCreateAccount()
         {
+
             return View();
+        }
+        [HttpPost]
+        public IActionResult UserCreateAccount(AccountViewModel accountData)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var account = new UserAccount
+                    {
+                        UserId = accountData.UserId,
+                         FirstName = accountData.FirstName,
+                         LastName = accountData.LastName,
+                         MiddleName = accountData.MiddleName,
+                         email = accountData.email,
+                         password = accountData.password,
+                         role = "Customer"
+                    };
+
+                    _context.UserAccounts.Add(account);
+                    _context.SaveChanges();
+                    return RedirectToAction("LandingPage");
+                }
+                else
+                {
+                    TempData["errorMessage"] = " Model data is not valid";
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
         }
         public IActionResult UserForgotPassword()
         {
