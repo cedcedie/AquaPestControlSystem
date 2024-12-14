@@ -20,7 +20,7 @@ namespace AquaPestControlSystem.Controllers
         }
         public IActionResult UserLogin()
         {
-
+            var users = "";
             return View();
         }
         public IActionResult UserCreateAccount()
