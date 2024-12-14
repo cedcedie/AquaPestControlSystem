@@ -1,12 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace AquaPestControlSystem.Models.DBEntities
+﻿namespace AquaPestControlSystem.Models
 {
-    public class Report
+    public class ReportViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ReportId { get; set; }
 
         public DateTime DateInspection { get; set; }
@@ -29,6 +24,8 @@ namespace AquaPestControlSystem.Models.DBEntities
 
         public double SalesInput { get; set; }
 
-        public string FileName { get; set; }
+        public IFormFile ImageFile { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

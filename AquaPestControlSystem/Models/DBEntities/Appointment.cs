@@ -26,12 +26,6 @@ namespace AquaPestControlSystem.Models.DBEntities
 
         public DateTime? Schedule {  get; set; }
 
-        public string ImageFileName { get; set; }
-
-        public string? CustomerId { get; set; }
-
-        public Customer? customer { get; set; }
-
         public string FullName
         {
             get { return FirstName + " " + MiddleName + " " + LastName;}

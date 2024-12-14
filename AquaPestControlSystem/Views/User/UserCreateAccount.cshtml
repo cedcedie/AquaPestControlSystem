@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model AquaPestControlSystem.Models.AccountViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,22 +73,37 @@
             <p class="text-muted">Please fill in the details to create your account.</p>
         </div>
 
-        <form id="registerForm" method="post" asp-action="RegisterUser" novalidate>
+        <form id="registerForm" method="post" asp-action="UserCreateAccount" novalidate>
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Username</label>
+                <input asp-for="FirstName" type="text" class="form-control" id="username" name="firstName" placeholder="Enter First Name" required />
+                <div class="text-danger" id="usernameError"></div>
+            </div>
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="Username" placeholder="Enter a username" required />
+                <input asp-for="MiddleName" type="text" class="form-control" id="username" name="Username" placeholder="Enter Middle Name" required />
+                <div class="text-danger" id="usernameError"></div>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input asp-for="LastName" type="text" class="form-control" id="username" name="Username" placeholder="Enter Last Name" required />
+                <div class="text-danger" id="usernameError"></div>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input asp-for="username" type="text" class="form-control" id="username" name="Username" placeholder="Enter a username" required />
                 <div class="text-danger" id="usernameError"></div>
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" name="Email" placeholder="Enter your email" required />
+                <input asp-for=email type="email" class="form-control" id="email" name="Email" placeholder="Enter your email" required />
                 <div class="text-danger" id="emailError"></div>
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password" required />
+                <input asp-for="password" type="password" class="form-control" id="password" name="Password" placeholder="Enter your password" required />
                 <div class="text-danger" id="passwordError"></div>
             </div>
 
