@@ -211,50 +211,44 @@ namespace AquaPestControlSystem.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                // Validate the file
+                if (appointmentData.ImageFile == null || appointmentData.ImageFile.Length == 0)
                 {
-                    if (appointmentData.ImageFile == null || appointmentData.ImageFile.Length == 0)
-                    {
-                        ModelState.AddModelError("ImageFile", "Please select an image file.");
-                        return View(appointmentData);
-                    }
-
-                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(appointmentData.ImageFile.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        appointmentData.ImageFile.CopyTo(stream);
-                    }
-
-                    var appointment = new Appointment()
-                    {
-                        FirstName = appointmentData.FirstName,
-                        LastName = appointmentData.LastName,
-                        MiddleName = appointmentData.MiddleName,
-                        ContactNum = appointmentData.ContactNum,
-                        Address = appointmentData.Address,
-                        PestProblem = appointmentData.PestProblem,
-                        Schedule = appointmentData.Schedule,
-                        ImageFileName = "~/images/" + fileName
-                    };
-
-                    _context.Appointments.Add(appointment);
-                    _context.SaveChanges();
-
-                    return RedirectToAction("ProprieterAppointments");
-                }
-                else
-                {
-                    ModelState.AddModelError("CustomError", "This is a custom validation error message.");
-
-                    // Return the view with validation errors
+                    ModelState.AddModelError("ImageFile", "Please select an image file.");
                     return View(appointmentData);
                 }
+
+                // Generate a unique file name
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(appointmentData.ImageFile.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", fileName);
+
+                // Save the file
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    appointmentData.ImageFile.CopyTo(stream);
+                }
+
+                // Create the Appointment entity
+                var appointment = new Appointment()
+                {
+                    FirstName = appointmentData.FirstName,
+                    LastName = appointmentData.LastName,
+                    MiddleName = appointmentData.MiddleName,
+                    ContactNum = appointmentData.ContactNum,
+                    Address = appointmentData.Address,
+                    PestProblem = appointmentData.PestProblem,
+                    ImageFileName = "~/images/" + fileName
+                };
+
+                _context.Appointments.Add(appointment);
+                _context.SaveChanges();
+
+                return View("ProprieterAppointments");
             }
             catch (Exception ex)
             {
-                return View("Error", ex);
+                TempData["errorMessage"] = ex.Message;
+                return View(ex);
             }
         }
 

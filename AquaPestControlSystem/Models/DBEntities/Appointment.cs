@@ -24,13 +24,13 @@ namespace AquaPestControlSystem.Models.DBEntities
 
         public string PestProblem {  get; set; }
 
-        public DateTime Schedule {  get; set; }
+        public DateTime? Schedule {  get; set; }
 
         public string ImageFileName { get; set; }
 
-        public string CustomerId { get; set; }
+        public string? CustomerId { get; set; }
 
-        public Customer customer { get; set; }
+        public Customer? customer { get; set; }
 
         public string FullName
         {

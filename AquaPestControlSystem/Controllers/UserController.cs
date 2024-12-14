@@ -29,6 +29,12 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult UserLogin()
+        {
+            return View();
+        }
+
         public IActionResult UserLogin(AccountViewModel accountData)
         {
             var user = _context.UserAccounts.FirstOrDefault(a => a.username == accountData.username && a.password == accountData.password);

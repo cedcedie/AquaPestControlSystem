@@ -1,4 +1,5 @@
 ﻿@model AquaPestControlSystem.Models.AppointmentViewModel
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
     <meta charset="UTF-8"> 
@@ -76,11 +77,12 @@
                 <div class="col-md-8">
                     <div class="form-container p-4 shadow-sm bg-white rounded">
                         <h2 class="text-center mb-4">Appointment Details</h2>
-                        <form asp-action="ProprieterAddAppointment" asp-controller="Proprieter" method="post" id="appointmentForm" enctype="multipart/form-data">
+                        <form method="post" asp-action="ProprieterAddAppointment" id="appointmentForm" enctype="multipart/form-data">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                                    <input asp-for="Email" type="email" class="form-control" id="email" placeholder="Enter Email Address">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -120,11 +122,6 @@
                                     <label for="pestProblem" class="form-label">Pest Problem:</label>
                                     <input asp-for="PestProblem" type="text" class="form-control" id="pestProblem" placeholder="Describe Pest Problem">
                                     <span asp-validation-for="PestProblem" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="schedule" class="form-label">Schedule:</label>
-                                    <input asp-for="Schedule" type="datetime-local" class="form-control" id="schedule">
-                                    <span asp-validation-for="Schedule" class="text-danger"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="image" class="form-label">Add Image for Problem:</label>
