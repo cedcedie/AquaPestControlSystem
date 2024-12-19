@@ -105,6 +105,7 @@
                         <th>Contact Number</th>
                         <th>Email</th>
                         <th>Address</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="customerTableBody">
@@ -117,6 +118,11 @@
                                         <td>@customer.ContactNum</td>
                                         <td>@customer.Email</td>
                                         <td>@customer.Address</td>
+                                <td>
+                                    <a href="@Url.Action("ProprieterEditCustomer", "Proprieter", new { id = customer.CustomerId })">
+                                        <button class="btn btn-warning">Edit</button>
+                                    </a>
+                                </td>
                                     </tr>
                         }
                     }

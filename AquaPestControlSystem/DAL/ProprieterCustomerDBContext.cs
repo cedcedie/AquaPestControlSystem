@@ -14,5 +14,6 @@ namespace AquaPestControlSystem.DAL
         public DbSet<Appointment> Appointments { get; set; }
 
         public  DbSet<UserAccount> UserAccounts { get; set; }
+        public DbSet<Report> Reports { get; set; }
     }
 }

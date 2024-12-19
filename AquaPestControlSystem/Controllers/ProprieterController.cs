@@ -449,5 +449,76 @@ namespace AquaPestControlSystem.Controllers
         {
             return View();
         }
+
+        [HttpGet("EditCustomer/{id:int}")]
+        public IActionResult ProprieterEditCustomer(int id)
+        {
+            var customer = _context.Customers.FirstOrDefault(a => a.CustomerId == id);
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            // Create an instance of the ViewModel and map the data
+            var viewModel = new CustomerViewModel
+            {
+                CustomerId = customer.CustomerId,
+                FirstName = customer.FirstName,
+                ContactNum = customer.ContactNum,
+                Address = customer.Address,
+                MiddleName = customer.MiddleName,
+                LastName = customer.LastName,
+                Email = customer.Email
+            };
+
+            return View(viewModel); // Pass the ViewModel to the view
+        }
+
+        [HttpPost("EditCustomer/{id:int}")] // Keep the route attribute
+        public async Task<IActionResult> ProprieterEditCustomer(int id, CustomerViewModel customerData)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // 1. Retrieve the existing technician from the database using the ID
+                    var customer = await _context.Customers.FindAsync(id); // Use FindAsync for async operations
+
+                    if (customer == null)
+                    {
+                        return NotFound(); // Handle the case where the technician doesn't exist
+                    }
+
+                    // 2. Update the properties of the retrieved technician
+                    customer.FirstName = customerData.FirstName;
+                    customer.LastName = customerData.LastName;
+                    customer.MiddleName = customerData.MiddleName;
+                    customer.ContactNum = customerData.ContactNum;
+                    customer.Address = customerData.Address;
+                    customer.Email = customerData.Email;
+                    // Do not update the TechnicianId as it is the primary key
+
+                    // 3. EF Core tracks the changes automatically, so you don't need .Update()
+                    await _context.SaveChangesAsync(); // Save the changes asynchronously
+
+                    return RedirectToAction("ProprieterCustomer");
+                }
+                else
+                {
+                    //If the model is invalid, return the view with the model so the user can correct the errors.
+                    return View(customerData);
+                }
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return View(customerData);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(customerData);
+            }
+        }
     }
 }

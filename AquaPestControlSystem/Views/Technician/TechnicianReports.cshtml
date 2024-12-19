@@ -1,4 +1,4 @@
-﻿@model List<AquaPestControlSystem.Models.ReportViewModel>
+﻿@model AquaPestControlSystem.Models.ReportViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
     <meta charset="UTF-8">
@@ -151,11 +151,11 @@
                 <div class="col-md-6">
                     <div class="table-container">
                         <h2 class="text-center mb-4">INSPECTION SUMMARY</h2>
-                        <form id="inspectionForm" runat="server">
+                        <form asp-action="TechnicianReports" id="inspectionForm" runat="server">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="dateInspection" class="form-label">Date Inspection:</label>
-                                    <input type="date" class="form-control" id="dateInspection" required />
+                                    <input asp-for="DateInspection" type="date" class="form-control" id="dateInspection" required />
                                     <asp:RequiredFieldValidator 
                                         ControlToValidate="dateInspection" 
                                         ForeColor="Red" 
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inspectorName" class="form-label">Inspector Name:</label>
-                                    <input type="text" class="form-control" id="inspectorName" required />
+                                    <input asp-for="InspectorName" type="text" class="form-control" id="inspectorName" required />
                                     <asp:RequiredFieldValidator 
                                         ControlToValidate="inspectorName" 
                                         ForeColor="Red" 
@@ -176,7 +176,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="clientName" class="form-label">Client Name:</label>
-                                    <input type="text" class="form-control" id="clientName" required />
+                                    <input asp-for="ClientName" type="text" class="form-control" id="clientName" required />
                                     <asp:RequiredFieldValidator 
                                         ControlToValidate="clientName" 
                                         ForeColor="Red" 
@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="address" class="form-label">Address:</label>
-                                    <input type="text" class="form-control" id="address" required />
+                                    <input asp-for="Address" type="text" class="form-control" id="address" required />
                                     <asp:RequiredFieldValidator 
                                         ControlToValidate="address" 
                                         ForeColor="Red" 
@@ -197,7 +197,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="contactInfo" class="form-label">Contact Information:</label>
-                                    <input type="text" class="form-control" id="contactInfo" required />
+                                    <input asp-for="ContactNum" type="text" class="form-control" id="contactInfo" required />
                                     <asp:RequiredFieldValidator 
                                         ControlToValidate="contactInfo" 
                                         ForeColor="Red" 
@@ -206,7 +206,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inspectionType" class="form-label">Inspection Type:</label>
-                                    <select class="form-select" id="inspectionType" required>
+                                    <select asp-for="InspectionType" class="form-select" id="inspectionType" required>
                                         <option selected disabled>Select</option>
                                         <option>Initial</option>
                                         <option>Routine</option>
@@ -225,7 +225,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="area" class="form-label">Areas:</label>
-                                    <select class="form-select" id="area" required>
+                                    <select asp-for="Areas" class="form-select" id="area" required>
                                         <option selected disabled>Select</option>
                                         <option>Kitchen</option>
                                         <option>Storage Areas</option>
@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="treatmentType" class="form-label">Treatment Type:</label>
-                                    <select class="form-select" id="treatmentType" required>
+                                    <select asp-for="TreatmentType" class="form-select" id="treatmentType" required>
                                         <option selected disabled>Select</option>
                                         <option>Chemical Spray</option>
                                         <option>Bait Stations</option>
@@ -260,7 +260,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="pestType" class="form-label">Pest Type:</label>
-                                    <select class="form-select" id="pestType" required>
+                                    <select asp-for="PestType" class="form-select" id="pestType" required>
                                         <option selected disabled>Select</option>
                                         <option>Rodent</option>
                                         <option>Termites</option>
@@ -276,7 +276,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="salesInput" class="form-label">Sales Input:</label>
-                                    <input type="text" class="form-control" id="salesInput" placeholder="Enter sales details" required />
+                                    <input asp-for="SalesInput" type="text" class="form-control" id="salesInput" placeholder="Enter sales details" required />
                                     <asp:RequiredFieldValidator 
                                         ControlToValidate="salesInput" 
                                         ForeColor="Red" 
@@ -288,7 +288,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label for="problemImage" class="form-label">Add Image for Problem:</label>
-                                    <input type="file" class="form-control" id="problemImage" accept="image/*" multiple required />
+                                    <input asp-for="ImageFile" type="file" class="form-control" id="problemImage" accept="image/*" multiple required />
                                     <asp:RequiredFieldValidator 
                                         ControlToValidate="problemImage" 
                                         ForeColor="Red" 
@@ -299,7 +299,7 @@
 
                             <div class="text-center mt-4">
                             
-                                <button type="submit" class="btn btn-success">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>

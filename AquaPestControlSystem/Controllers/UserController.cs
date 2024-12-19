@@ -76,7 +76,6 @@ namespace AquaPestControlSystem.Controllers
                 {
                     var account = new UserAccount
                     {
-                        UserId = accountData.UserId,
                          FirstName = accountData.FirstName,
                          LastName = accountData.LastName,
                          MiddleName = accountData.MiddleName,
@@ -87,7 +86,7 @@ namespace AquaPestControlSystem.Controllers
 
                     _context.UserAccounts.Add(account);
                     _context.SaveChanges();
-                    return RedirectToAction("LandingPage");
+                    return RedirectToAction("UserLogin");
                 }
                 else
                 {
