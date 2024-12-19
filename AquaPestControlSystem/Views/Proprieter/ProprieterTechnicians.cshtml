@@ -119,12 +119,16 @@
                                 <td>@technician.FullName</td>
                                 <td>@technician.ContactNum</td>
                                 <td>@technician.Address</td>
-                                        <td>
-            <button class="btn @(@technician.Status.Equals("Active") ? "btn-success" : "btn-warning")">
+                                <td>
+                                    <button class="btn @(@technician.Status.Equals("Active") ? "btn-success" : "btn-warning")">
                                         @technician.Status
-            </button>
-        </td>
-                                <td><button class="btn btn-warning"></button></td>
+                                    </button>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("ProprieterEditTechnician", "Proprieter", new { id = technician.TechnicianId })">
+                                        <button class="btn btn-warning">Edit</button>
+                                    </a>
+                                </td>
                             </tr>
                         }
                     }

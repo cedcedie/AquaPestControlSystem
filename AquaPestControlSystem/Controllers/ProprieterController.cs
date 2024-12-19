@@ -2,6 +2,7 @@
 using AquaPestControlSystem.Models;
 using AquaPestControlSystem.Models.DBEntities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace AquaPestControlSystem.Controllers
@@ -45,11 +46,13 @@ namespace AquaPestControlSystem.Controllers
         public IActionResult ProprieterTechnicians()
         {
             List<TechnicianViewModel> technicianList = new List<TechnicianViewModel>();
-            var technician = _context.Technicians.ToList();
+            var activeTechnicians = _context.Technicians
+            .Where(t => t.Status == "Active") // Filter for active technicians
+            .ToList();
 
-            if (technician != null)
+            if (activeTechnicians != null)
             {
-                foreach (var technicians in technician)
+                foreach (var technicians in activeTechnicians)
                 {
                     var TechnicianViewModel = new TechnicianViewModel
                     {
@@ -167,7 +170,7 @@ namespace AquaPestControlSystem.Controllers
                         MiddleName = technicianData.MiddleName,
                         ContactNum = technicianData.ContactNum,
                         Address = technicianData.Address,
-                        Status = technicianData.Status
+                        Status = "Active"
                     };
 
                     _context.Technicians.Add(technician);
@@ -186,9 +189,75 @@ namespace AquaPestControlSystem.Controllers
                 return View();
             }
         }
-        public IActionResult ProprieterEditTechnician()
+
+        [HttpGet("EditTechnician/{id:int}")]
+        public IActionResult ProprieterEditTechnician(int id)
         {
-            return View();
+            var technician = _context.Technicians.FirstOrDefault(a => a.TechnicianId == id);
+
+            if (technician == null)
+            {
+                return NotFound();
+            }
+
+            // Create an instance of the ViewModel and map the data
+            var viewModel = new TechnicianViewModel
+            {
+                TechnicianId = technician.TechnicianId,
+                FirstName = technician.FirstName,
+                ContactNum = technician.ContactNum,
+                Address = technician.Address,
+                MiddleName = technician.MiddleName,
+                LastName = technician.LastName
+            };
+
+            return View(viewModel); // Pass the ViewModel to the view
+        }
+
+        [HttpPost("EditTechnician/{id:int}")] // Keep the route attribute
+        public async Task<IActionResult> ProprieterEditTechnician(int id, TechnicianViewModel technicianData)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // 1. Retrieve the existing technician from the database using the ID
+                    var technician = await _context.Technicians.FindAsync(id); // Use FindAsync for async operations
+
+                    if (technician == null)
+                    {
+                        return NotFound(); // Handle the case where the technician doesn't exist
+                    }
+
+                    // 2. Update the properties of the retrieved technician
+                    technician.FirstName = technicianData.FirstName;
+                    technician.LastName = technicianData.LastName;
+                    technician.MiddleName = technicianData.MiddleName;
+                    technician.ContactNum = technicianData.ContactNum;
+                    technician.Address = technicianData.Address;
+                    technician.Status = technicianData.Status;
+                    // Do not update the TechnicianId as it is the primary key
+
+                    // 3. EF Core tracks the changes automatically, so you don't need .Update()
+                    await _context.SaveChangesAsync(); // Save the changes asynchronously
+
+                    return RedirectToAction("ProprieterTechnicians");
+                }
+                else
+                {
+                    //If the model is invalid, return the view with the model so the user can correct the errors.
+                    return View(technicianData);
+                }
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return View(technicianData);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(technicianData);
+            }
         }
 
         public IActionResult ProprieterViewReport()
@@ -314,10 +383,68 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult ProprieterArchiveTechnicians()
         {
-            return View();
+            List<TechnicianViewModel> technicianList = new List<TechnicianViewModel>();
+            var inactiveTechnicians = _context.Technicians
+            .Where(t => t.Status == "Inactive") // Filter for active technicians
+            .ToList();
+
+            if (inactiveTechnicians != null)
+            {
+                foreach (var technicians in inactiveTechnicians)
+                {
+                    var TechnicianViewModel = new TechnicianViewModel
+                    {
+                        TechnicianId = technicians.TechnicianId,
+                        FirstName = technicians.FirstName,
+                        LastName = technicians.LastName,
+                        MiddleName = technicians.MiddleName,
+                        ContactNum = technicians.ContactNum,
+                        Address = technicians.Address,
+                        Status = technicians.Status
+                    };
+                    technicianList.Add(TechnicianViewModel);
+                }
+                return View(technicianList);
+            }
+            return View(technicianList);
         }
+
+        [HttpPost("RestoreTechnician/{id:int}")] // Use POST for actions that modify data
+        public async Task<IActionResult> RestoreTechnician(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var technician = await _context.Technicians.FindAsync(id);
+
+            if (technician == null)
+            {
+                return NotFound();
+            }
+
+            technician.Status = "Active"; // Change the status
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToAction("ProprieterArchiveTechnicians"); // Redirect back to the archive view
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return RedirectToAction("ProprieterArchiveTechnicians");
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return RedirectToAction("ProprieterArchiveTechnicians");
+            }
+        }
+
         public IActionResult ProprieterProfile()
         {
             return View();
