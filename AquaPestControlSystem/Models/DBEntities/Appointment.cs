@@ -12,7 +12,7 @@ namespace AquaPestControlSystem.Models.DBEntities
 
         public string FirstName { get; set; }
 
-        public string MiddleName { get; set; }
+        public string? MiddleName { get; set; }
 
         public string LastName { get; set; }
 
@@ -24,7 +24,9 @@ namespace AquaPestControlSystem.Models.DBEntities
 
         public string PestProblem {  get; set; }
 
-        public DateTime? Schedule {  get; set; }
+        public DateTime Schedule {  get; set; }
+
+        public string FileName { get; set; }
 
         public string FullName
         {

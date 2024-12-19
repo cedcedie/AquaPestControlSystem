@@ -1,5 +1,5 @@
-﻿@{
-}
+﻿@model List<AquaPestControlSystem.Models.AppointmentViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,63 +106,59 @@
 
     <div class="content">
         <div class="table-container">
-   
+
             <div class="header mb-4">
                 <h2>APPOINTMENT DETAILS</h2>
             </div>
 
             <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th>Appointment ID</th>
-                        <td>12345</td>
-                    </tr>
-                    <tr>
-                        <th>Full Name</th>
-                        <td>John Doe</td>
-                    </tr>
-                    <tr>
-                        <th>First Name</th>
-                        <td>John</td>
-                    </tr>
-                    <tr>
-                        <th>Middle Name</th>
-                        <td>Michael</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name</th>
-                        <td>Doe</td>
-                    </tr>
-                    <tr>
-                        <th>Contact Number</th>
-                        <td>(123) 456-7890</td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td>johndoe@example.com</td>
-                    </tr>
-                    <tr>
-                        <th>Address</th>
-                        <td>123 Oak Street, Cityville</td>
-                    </tr>
-                    <tr>
-                        <th>Pest Problem</th>
-                        <td>Termite Infestation</td>
-                    </tr>
-                    <tr>
-                        <th>Schedule</th>
-                        <td>09/10/2024</td>
-                    </tr>
-                    <tr>
-                        <th>Inspection Images</th>
-                        <td>
-                            <span class="view-btn" data-bs-toggle="modal" data-bs-target="#inspectionModal">View Images</span>
-                        </td>
-                    </tr>
-                </tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach(var appointment in Model){
+                    <tbody>
+                        <tr>
+                            <th>Full Name</th>
+                            <td>@appointment.FullName</td>
+                        </tr>
+                        <tr>
+                            <th>Contact Number</th>
+                            <td>@appointment.ContactNum</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>@appointment.Email</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>@appointment.Address</td>
+                        </tr>
+                        <tr>
+                            <th>Pest Problem</th>
+                            <td>@appointment.PestProblem</td>
+                        </tr>
+                        <tr>
+                            <th>Schedule</th>
+                            <td>@appointment.Schedule.ToString("MM/dd/yyyy")</td>
+                        </tr>
+                        <tr>
+                            <th>Inspection Images</th>
+                            <td><img src="@appointment.ImageUrl" alt="Appointment Image" style="width: 250px; height: 100px;"/></td>
+                        </tr>
+                    </tbody>
+                    }
+                }
+                else
+                {
+                    <tbody>
+                        <tr>
+                            <td colspan="2" class="text-center">No appointment details available.</td>
+                        </tr>
+                    </tbody>
+                }
             </table>
         </div>
     </div>
+
 
 
     <div class="modal fade" id="inspectionModal" tabindex="-1" aria-labelledby="inspectionModalLabel" aria-hidden="true">

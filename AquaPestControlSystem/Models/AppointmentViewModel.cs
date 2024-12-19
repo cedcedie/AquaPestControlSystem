@@ -33,7 +33,11 @@ namespace AquaPestControlSystem.Models
         public string PestProblem { get; set; }
 
         [DisplayName("Schedule")]
-        public DateTime? Schedule { get; set; }
+        public DateTime Schedule { get; set; }
+
+        public IFormFile FileImage { get; set; }
+
+        public string ImageUrl { get; set; }
 
         [DisplayName("Full Name")]
         public string FullName
