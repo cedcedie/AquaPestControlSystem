@@ -20,9 +20,64 @@ namespace AquaPestControlSystem.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult UserMakeAppointment()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult UserMakeAppointment(AppointmentViewModel appointmentData)
+        {
+            try
+            {
+                // Validate the file
+                if (appointmentData.FileImage == null || appointmentData.FileImage.Length == 0)
+                {
+                    ModelState.AddModelError("ImageFile", "Please select an image file.");
+                    return View(appointmentData);
+                }
+
+                // Generate a unique file name
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(appointmentData.FileImage.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", fileName);
+
+                // Save the file
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    appointmentData.FileImage.CopyTo(stream);
+                }
+
+                var appointment = new Appointment
+                {
+                    FirstName = appointmentData.FirstName,
+                    LastName = appointmentData.LastName,
+                    MiddleName = appointmentData.MiddleName,
+                    ContactNum = appointmentData.ContactNum,
+                    Email = appointmentData.Email,
+                    Address = appointmentData.Address,
+                    PestProblem = appointmentData.PestProblem,
+                    Schedule = appointmentData.Schedule,
+                    FileName = "~/images/" + fileName
+                };
+
+                _context.Appointments.Add(appointment);
+                _context.SaveChanges();
+
+                TempData["SuccessMessage"] = "Appointment added successfully!";
+                return RedirectToAction("UserMakeAppointment");
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log the error for debugging
+                Console.WriteLine(ex.Message);
+
+                // Add a user-friendly error message
+                ModelState.AddModelError("", "An error occurred while saving your data. Please try again.");
+
+                // Return the view with the same model to show validation errors
+                return View();
+            }
         }
 
         public IActionResult LandingPage()
@@ -56,7 +111,7 @@ namespace AquaPestControlSystem.Controllers
             }
             else if (user.role == "Customer")
             {
-                return RedirectToAction("UserDashboard");
+                return RedirectToAction("UserMakeAppointment", "User");
             }
             return View();
 

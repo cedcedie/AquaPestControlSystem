@@ -17,7 +17,7 @@ namespace AquaPestControlSystem.Models
         public string LastName { get; set; }
 
         [DisplayName("Middle Name")]
-        public string MiddleName { get; set; }
+        public string? MiddleName { get; set; }
 
         [DisplayName("Contact Number")]
         public long ContactNum { get; set; }

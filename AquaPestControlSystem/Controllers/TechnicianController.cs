@@ -77,7 +77,7 @@ namespace AquaPestControlSystem.Controllers
                 _context.Reports.Add(report);
                 _context.SaveChanges();
 
-                return RedirectToAction("TechnicianReports");
+                return RedirectToAction("TechnicianViewReports");
             }
             catch (DbUpdateException ex)
             {
