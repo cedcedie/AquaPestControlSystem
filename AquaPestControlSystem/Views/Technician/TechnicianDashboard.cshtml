@@ -80,6 +80,11 @@
             <span class="icon">📋</span>
             <span>Schedule</span>
         </a>
+        <a href="@Url.Action("TechnicianViewReports", "Technician")" class="menu-item" data-menu="ViewReports">
+            <span class="icon">📋</span>
+            <span>View Reports</span>
+        </a>
+
 
         <div class="profile">
             <a href="@Url.Action("TechnicianProfile", "Technician")" style="display: flex; align-items: center; text-decoration: none;">
@@ -95,10 +100,10 @@
         </div>
     </div>
 
-    <div class="container mt-5">
+    <div class="mt-5 container">
         <div class="row">
             <div class="col-md-3">
-                <div class="card shadow-sm border-0 rounded-lg p-4 mb-6" style="background: #fff; border-left: 4px solid #219ebc;">
+                <div class="card p-4 mb-6 rounded-lg border-0 shadow-sm" style="background: #fff; border-left: 4px solid #219ebc;">
                     <div class="d-flex align-items-center">
                         <div class="h3 text-primary mr-3">📊</div>
                         <div>
@@ -108,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="card shadow-sm border-0 rounded-lg p-4 mb-6" style="background: #fff; border-left: 4px solid #00aaff;">
+                <div class="card p-4 mb-6 rounded-lg border-0 shadow-sm" style="background: #fff; border-left: 4px solid #00aaff;">
                     <div class="d-flex align-items-center">
                         <div class="h3 text-success mr-3">📅</div>
                         <div>
@@ -118,7 +123,7 @@
                     </div>
                 </div>
 
-                <div class="card shadow-sm border-0 rounded-lg p-4 mb-12" style="background: #fff; border-left: 4px solid #f5a623;">
+                <div class="card p-4 mb-12 rounded-lg border-0 shadow-sm" style="background: #fff; border-left: 4px solid #f5a623;">
                     <div class="d-flex align-items-center">
                         <div class="h3 text-warning mr-3">🗓️</div>
                         <div>
@@ -140,10 +145,10 @@
 
        
             <div class="col-md">
-                <div class="card shadow-sm border-0 rounded-lg p-4">
+                <div class="card p-4 rounded-lg border-0 shadow-sm">
                     <h5>Previous Activity Records</h5>
                     <div class="table-container">
-                        <table class="table table-striped mt-3">
+                        <table class="table-striped mt-3 table">
                             <thead>
                                 <tr>
                                     <th scope="col">Date</th>

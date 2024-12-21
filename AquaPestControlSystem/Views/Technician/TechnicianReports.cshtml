@@ -95,6 +95,7 @@
 <body style="background-color: #8ecae6;">
     <div class="sidebar" id="menu">
         <h2>Aquarius Pest Control Services</h2>
+
         <a href="@Url.Action("TechnicianDashboard", "Technician")" class="menu-item" data-menu="Dashboard">
             <span class="icon">📋</span>
             <span>Dashboard</span>
@@ -111,6 +112,12 @@
             <span class="icon">📋</span>
             <span>Schedule</span>
         </a>
+        <a href="@Url.Action("TechnicianViewReports", "Technician")" class="menu-item" data-menu="ViewReports">
+            <span class="icon">📋</span>
+            <span>View Reports</span>
+        </a>
+
+
         <div class="profile">
             <a href="@Url.Action("TechnicianProfile", "Technician")" style="display: flex; align-items: center; text-decoration: none;">
                 <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
@@ -305,7 +312,7 @@
                     </div>
                 </div>
 
-            
+       
 
     <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

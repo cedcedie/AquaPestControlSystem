@@ -1,0 +1,195 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarius Pest Control Services - Customer Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/output.css" media="all" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" />
+    <style>
+        .table th, .table td {
+            padding: 15px;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .card {
+            margin-top: 30px;
+        }
+
+        .view-btn {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .view-btn:hover {
+                text-decoration: none;
+            }
+
+        .modal-content img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body style="background-color: #8ecae6;">
+    <div class="sidebar" id="menu">
+        <h2>Aquarius Pest Control Services</h2>
+
+        <a href="@Url.Action("TechnicianDashboard", "Technician")" class="menu-item" data-menu="Dashboard">
+            <span class="icon">📋</span>
+            <span>Dashboard</span>
+        </a>
+        <a href="@Url.Action("TechnicianReports", "Technician")" class="menu-item" data-menu="Reports">
+            <span class="icon">📋</span>
+            <span>Reports</span>
+        </a>
+        <a href="@Url.Action("TechnicianRequest", "Technician")" class="menu-item" data-menu="Request">
+            <span class="icon">📋</span>
+            <span>Request</span>
+        </a>
+        <a href="@Url.Action("TechnicianSchedule", "Technician")" class="menu-item" data-menu="Schedule">
+            <span class="icon">📋</span>
+            <span>Schedule</span>
+        </a>
+        <a href="@Url.Action("TechnicianViewReports", "Technician")" class="menu-item" data-menu="ViewReports">
+            <span class="icon">📋</span>
+            <span>View Reports</span>
+        </a>
+
+
+        <div class="profile">
+            <a href="@Url.Action("ProprieterProfile", "Proprieter")" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" style="margin-right: 10px;">
+                <div class="profile-info" style="margin-right: 10px;">
+                    <span>Rodrigo</span>
+                    <span class="role">Proprietor</span>
+                </div>
+            </a>
+            <a href="#" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer; margin-left: 60px; text-decoration: none;">
+                <span class="logout-arrow">⮞</span>
+            </a>
+        </div>
+    </div> </div>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="@Url.Action("UserLogin", "User")" class="btn btn-primary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="table-container">
+            <div class="header">
+                <h2>Previous Reports</h2>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search..." />
+                    <div class="sort-container" id="sortButton">
+                        <span>Sort by Newest</span>
+                        <span class="sort-arrow">▼</span>
+                    </div>
+                </div>
+            </div>
+            <table class="table-bordered table">
+                <thead>
+                    <tr>
+                        <th>Report ID</th>
+                        <th>Date</th>
+                        <th>Inspector Name</th>
+                        <th>Client Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>2024-12-05</td>
+                        <td>John Doe</td>
+                        <td>ABC Company</td>
+                        <td>Completed</td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>2024-12-06</td>
+                        <td>Jane Smith</td>
+                        <td>XYZ Corp</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>#003</td>
+                        <td>2024-12-07</td>
+                        <td>Rodrigo</td>
+                        <td>LMN Industries</td>
+                        <td>Completed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="inspectionModal" tabindex="-1" aria-labelledby="inspectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inspectionModalLabel">Inspection Images</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div id="inspectionCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://via.placeholder.com/500x300?text=Inspection+Image+1" class="d-block w-100" alt="Inspection Image 1">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://via.placeholder.com/500x300?text=Inspection+Image+2" class="d-block w-100" alt="Inspection Image 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://via.placeholder.com/500x300?text=Inspection+Image+3" class="d-block w-100" alt="Inspection Image 3">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#inspectionCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#inspectionCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/proSidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
